@@ -10,6 +10,5 @@ public class Circuit {
 	public void ajoute_composant(_Composant composant){
 		
 	}
-	MA BITE SUR TON FRONT
 	
 }
