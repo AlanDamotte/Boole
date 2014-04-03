@@ -12,6 +12,9 @@ public class Circuit {
 	private List<$Composant> liste_composants = new LinkedList<$Composant>();
 	
 
+	public Circuit(){
+		this.nom="";
+	}
 	
 	public Circuit(String nom){
 		this.nom=nom;
