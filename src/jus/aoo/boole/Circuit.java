@@ -1,14 +1,42 @@
 package jus.aoo.boole;
 
-import jus.aoo.boole.composant._Composant;
+import java.util.LinkedList;
+import java.util.List;
+
+import jus.aoo.boole.composant.*;
 
 public class Circuit {
 	
-	private int num_composant;
 	private String nom;
+	//Liste de composants
+	private List<$Composant> liste_composants = new LinkedList<$Composant>();
 	
-	public void ajoute_composant(_Composant composant){
-		
+
+	
+	public Circuit(String nom){
+		this.nom=nom;
 	}
-	//Je suis une licorne
+	
+	public boolean est_ouvert(){
+		boolean b;
+		//COMPLETER
+		b=true;
+		return b;
+	}
+	
+	public void ajoute_composant($Composant composant){
+		liste_composants.add(composant);
+	}
+	
+	public void supprime(int num_composant){
+		for ($Composant comp : this.liste_composants) {
+			if (comp.num_composant()==num_composant){
+				liste_composants.remove(comp);
+			}
+		}
+	}
+	
+	public void affiche_circuit(){
+		//COMPLETER
+	}
 }

@@ -1,5 +1,9 @@
 package jus.aoo.boole.port;
 
-public class Sortie implements _Port<LISTE>{
+import java.util.LinkedList;
+import java.util.List;
+
+public class Sortie extends $Port{
+	protected List<Connexion> connexion_list = new LinkedList<Connexion>();
 
 }

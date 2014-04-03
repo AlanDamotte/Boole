@@ -1,5 +1,5 @@
 package jus.aoo.boole.port;
 
-public class Entree implements _Port<???> {
+public class Entree extends $Port{
 
 }

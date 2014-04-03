@@ -10,5 +10,5 @@ public class Circuit {
 	public void ajoute_composant(_Composant composant){
 		
 	}
-	
+	//Je suis une licorne
 }

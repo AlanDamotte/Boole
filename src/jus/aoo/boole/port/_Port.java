@@ -1,6 +1,6 @@
 package jus.aoo.boole.port;
 
-public interface _Port<T> {
+public interface _Port {
 	
-	public boolean est_connecte();
+	
 }
