@@ -19,8 +19,11 @@ public class Circuit {
 	
 	public boolean est_ouvert(){
 		boolean b;
-		//COMPLETER
-		b=true;
+		// MEILLEUR IMPLEMENTATION => WHILE : ON S'ARRETE LORSQU'UN PORT N'EST PAS CONNECTE
+		for ($Composant comp : this.liste_composants) {
+			// FOR EACH A COMPLETER EN REGARDANT CHACUN DES PORTS
+			}
+		b = false;
 		return b;
 	}
 	

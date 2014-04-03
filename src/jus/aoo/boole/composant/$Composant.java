@@ -7,7 +7,7 @@ public abstract class $Composant {
 	protected int num_composant;
 	protected List<$Port> portlist = new LinkedList<$Port>();
 	protected String nom;
-	//Cas des composants compoosites
+	//Cas des composants composites
 	protected List<$Composant> comp_liste = new LinkedList<$Composant>();
 	
 	public $Composant (int num_composant, $Port liste_ports){
