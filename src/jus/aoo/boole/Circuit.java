@@ -1,5 +1,6 @@
 package jus.aoo.boole;
 
+import jus.aoo.boole.composant.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,6 +26,15 @@ public class Circuit {
 		// MEILLEUR IMPLEMENTATION => WHILE : ON S'ARRETE LORSQU'UN PORT N'EST PAS CONNECTE
 		for ($Composant comp : this.liste_composants) {
 			// FOR EACH A COMPLETER EN REGARDANT CHACUN DES PORTS
+			if(comp instanceof Generateur){
+			
+			}
+			if(comp instanceof Recepteur){
+				
+			}
+			if(comp instanceof Transformateur){
+				
+			}
 			}
 		b = false;
 		return b;
