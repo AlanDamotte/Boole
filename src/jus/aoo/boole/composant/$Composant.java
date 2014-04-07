@@ -13,7 +13,7 @@ public abstract class $Composant implements _Composant{
 	protected String nom;
 	protected int nb_sorties;
 	protected int nb_entrees;
-	//Infos complémentaires: quel attribut mettre?
+	//Infos complémentaires: quel attribut mettre ?
 	
 	protected $Composant (){
 		
