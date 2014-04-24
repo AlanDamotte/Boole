@@ -7,18 +7,13 @@ import java.util.List;
 
 
 public class Transformateur extends $Composant {
-	//La liste des sorties et des entrées est utile pour accéder aux états de chacun d'entre eux
-	protected List<Sortie> sor_list = new LinkedList<Sortie>();
-	protected List<Entree> ent_list = new LinkedList<Entree>();	
 	
 	public Transformateur(){
 			super();
 	}
 	
-	public Transformateur (String nom, int num_composant, int nb_sorties, int nb_entrees, List<Sortie> sor_list, List<Entree> ent_list){
-		super(nom,num_composant,nb_sorties,nb_entrees);
-		this.sor_list=sor_list;
-		this.ent_list=ent_list;
+	public Transformateur (String nom, int nb_sorties, int nb_entrees, List<Sortie> sor_list, List<Entree> ent_list){
+		super(nom,nb_sorties,nb_entrees, sor_list, ent_list);
 	}
 	
 	public List<Sortie> sor_list(){
@@ -27,5 +22,9 @@ public class Transformateur extends $Composant {
 	
 	public List<Entree> ent_list(){
 		return new LinkedList<Entree>(ent_list);
+	}
+	
+	public void operer(){
+		super.operer();
 	}
 }

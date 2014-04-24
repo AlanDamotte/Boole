@@ -11,13 +11,18 @@ import java.util.*;
 public abstract class $Composite extends Circuit implements _Composant {
 	protected int num_composant;
 	protected String nom;
+	
+	/**Operer sera décidé lors de circuit, et il sera appelé lors de composite
+	 */
+	
 	//La liste des composants est apportée par circuit
 	//protected List<$Composant> comp_liste = new LinkedList<$Composant>();
 	
 	private class Comp extends $Composant{
 
-		public Comp (String nom, int num_composant){
-			super.num_composant=num_composant;
+		public Comp (String nom){
+			//num_composant décidé dans circuit
+			//super.num_composant=num_composant;
 			super.nom=nom;
 		}
 	}

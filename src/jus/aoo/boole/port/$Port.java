@@ -1,14 +1,17 @@
 package jus.aoo.boole.port;
 
+import jus.aoo.boole.*;
+
 public abstract class $Port {
-	protected boolean etat;
-	protected int identifiant;
+	protected Niveau etat;
+	//Intéret identifiant?
+	//protected int identifiant;
 	
-	public boolean get_etat(){
+	public Niveau get_etat(){
 		return this.etat;
 	}
 	
-	public void set_etat(boolean b){
+	public void set_etat(Niveau b){
 		this.etat=b;
 	}
 }

@@ -1,5 +1,7 @@
 package jus.aoo.boole.composant;
 
-public interface _Composant {
+import jus.aoo.boole.*;
+
+public interface _Composant extends _Operer {
 	
 }

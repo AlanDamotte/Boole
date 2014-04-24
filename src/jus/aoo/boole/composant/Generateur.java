@@ -7,10 +7,13 @@ import java.util.List;
 
 
 public class Generateur extends $Composant {
-	protected List<Sortie> sor_list = new LinkedList<Sortie>();	
 	
-	public Generateur (String nom, int num_composant, int nb_sorties, List<Sortie> sor_list){
-		super(nom,num_composant,nb_sorties,0);
+	public Generateur(){
+		super();
+	}
+	
+	public Generateur (String nom, int nb_sorties, List<Sortie> sor_list){
+		super(nom,nb_sorties,0,sor_list,new LinkedList<Entree>());
 		this.sor_list=sor_list;
 	}
 	

@@ -7,10 +7,13 @@ import java.util.List;
 
 
 public class Recepteur extends $Composant {
-	protected List<Entree> ent_list = new LinkedList<Entree>();	
 	
-	public Recepteur (String nom, int num_composant, int nb_entrees, List<Entree> ent_list){
-		super(nom,num_composant,0,nb_entrees);
+	public Recepteur(){
+		super();
+	}
+	
+	public Recepteur (String nom, int nb_entrees, List<Entree> ent_list){
+		super(nom,0,nb_entrees,new LinkedList<Sortie>(),ent_list);
 		this.ent_list=ent_list;
 	}
 	
