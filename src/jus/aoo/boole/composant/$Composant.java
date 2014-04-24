@@ -55,7 +55,7 @@ public abstract class $Composant implements _Composant{
 		return new String(nom);
 	}
 	
-	//Comment l'implémenter?
+	//La méthode operer ne sera implémentée réellement que dans les niveaux plus bas
 	public void operer(){
 		
 	}

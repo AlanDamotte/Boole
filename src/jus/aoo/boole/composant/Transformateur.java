@@ -6,6 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 
+//Penser à faire binaire et unaire, ensuite operer sera la seule méthode dans et, ou,..
+
+
 public class Transformateur extends $Composant {
 	
 	public Transformateur(){
