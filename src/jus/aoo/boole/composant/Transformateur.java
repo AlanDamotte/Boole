@@ -7,6 +7,7 @@ import java.util.List;
 
 
 public class Transformateur extends $Composant {
+	//La liste des sorties et des entrées est utile pour accéder aux états de chacun d'entre eux
 	protected List<Sortie> sor_list = new LinkedList<Sortie>();
 	protected List<Entree> ent_list = new LinkedList<Entree>();	
 	
