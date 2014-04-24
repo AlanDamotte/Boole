@@ -7,4 +7,8 @@ public abstract class $Port {
 	public boolean get_etat(){
 		return this.etat;
 	}
+	
+	public void set_etat(boolean b){
+		this.etat=b;
+	}
 }
