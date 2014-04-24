@@ -10,6 +10,10 @@ public class Transformateur extends $Composant {
 	protected List<Sortie> sor_list = new LinkedList<Sortie>();
 	protected List<Entree> ent_list = new LinkedList<Entree>();	
 	
+	public Transformateur(){
+			super();
+	}
+	
 	public Transformateur (String nom, int num_composant, int nb_sorties, int nb_entrees, List<Sortie> sor_list, List<Entree> ent_list){
 		super(nom,num_composant,nb_sorties,nb_entrees);
 		this.sor_list=sor_list;
