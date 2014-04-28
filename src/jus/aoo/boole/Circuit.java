@@ -1,16 +1,12 @@
 package jus.aoo.boole;
 
 import jus.aoo.boole.composant.*;
-import java.util.LinkedList;
-import java.util.List;
-
-import jus.aoo.boole.composant.*;
 
 public class Circuit implements _Operer{
 	
 	private String nom;
-	//Liste de composants
-	private List<$Composant> liste_composants = new LinkedList<$Composant>();
+	//Tableau de composants
+	private $Composant tab_composants[];
 	
 	//Circuit doit dÃ©finir les diffÃ©rents niveaux et les connexions entre les composants. C'est lui qui utilise les cases
 	//allouÃ©es dans le tableau crÃ©Ã© par le constructeur dans les composants.
@@ -27,7 +23,7 @@ public class Circuit implements _Operer{
 	public boolean est_ouvert(){
 		boolean b;
 		// MEILLEUR IMPLEMENTATION => WHILE : ON S'ARRETE LORSQU'UN PORT N'EST PAS CONNECTE
-		for ($Composant comp : this.liste_composants) {
+		for ($Composant comp : this.tab_composants) {
 			// FOR EACH A COMPLETER EN REGARDANT CHACUN DES PORTS
 			if(comp instanceof Generateur){
 			
@@ -43,13 +39,14 @@ public class Circuit implements _Operer{
 		return b;
 	}
 	
-	public void ajoute_composant($Composant composant){
-		liste_composants.add(composant);
-	}
+	// Vérifier dans le sujet si cette méthode est nécessaire
+//	public void ajoute_composant($Composant composant){
+//	
+//	}
 	
 	public void supprime(int num_composant){
-		/*for ($Composant comp : this.liste_composants) {
-			if (comp.num_composant()==num_composant){
+		/*for ($Composant comp : this.tab_composants) {
+			if (comp.==num_composant){
 				liste_composants.remove(comp);
 			}
 		}*/

@@ -1,12 +1,10 @@
 package jus.aoo.boole.port;
 
-import java.util.LinkedList;
-import java.util.List;
 
 public class Sortie extends $Port{
-	protected List<Connexion> sorties = new LinkedList<Connexion>();
+	protected Connexion sorties[];
 	
-	public List<Connexion> getSortie(){
+	public Connexion[] getSortie(){
 		return this.sorties;
 	}
 

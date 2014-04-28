@@ -2,9 +2,6 @@ package jus.aoo.boole.composant;
 
 import jus.aoo.boole.port.*;
 
-import java.util.LinkedList;
-import java.util.List;
-
 
 public class Recepteur extends $Composant {
 	
@@ -12,12 +9,14 @@ public class Recepteur extends $Composant {
 		super();
 	}
 	
-	public Recepteur (String nom, int nb_entrees, List<Entree> ent_list){
-		super(nom,0,nb_entrees,new LinkedList<Sortie>(),ent_list);
-		this.ent_list=ent_list;
+	public Recepteur (String nom, Entree ent_tab[]){
+		super(nom,new Sortie[0],ent_tab);
+		this.ent_tab=ent_tab;
 	}
 	
-	public List<Entree> ent_list(){
-		return new LinkedList<Entree>(ent_list);
+	public Entree[] ent_tab(){
+		Entree[] res; 
+		res=ent_tab.clone(); 
+		return res;
 	}
 }

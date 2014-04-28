@@ -2,11 +2,10 @@ package jus.aoo.boole.composant;
 
 import jus.aoo.boole.port.*;
 
-import java.util.LinkedList;
 
 public class Et extends Transformateur {
 	public Et(){
-		super("Et",1,2,new LinkedList<Sortie>(),new LinkedList<Entree>());
+		super("Et",new Sortie[1],new Entree[2]);
 	}
 	
 	//Ceci est associé à l'opération opérer

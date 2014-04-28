@@ -1,9 +1,8 @@
 package jus.aoo.boole.composant;
 
-import java.util.LinkedList;
-
 import jus.aoo.boole.Niveau;
 import jus.aoo.boole.port.Entree;
+import jus.aoo.boole.port.Sortie;
 
 public class Led extends Recepteur{
 	
@@ -11,7 +10,7 @@ public class Led extends Recepteur{
 	//private Niveau niveau;
 	
 	public Led(){
-		super("Led",1,new LinkedList<Entree>());
+		super("Led",new Entree[1]);
 	}
 	
 	/*public Niveau get_niveau(){

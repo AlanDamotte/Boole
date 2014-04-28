@@ -1,15 +1,11 @@
 package jus.aoo.boole.composant;
 
-import java.util.LinkedList;
-
-
-
 import jus.aoo.boole.port.Sortie;
 import jus.aoo.boole.*;
 
 public class Itr extends Generateur{
 	public Itr(){
-		super("Itr",1,new LinkedList<Sortie>());
+		super("Itr",new Sortie[1]);
 	}
 	
 	//Operer (niveau ne doit etre utilisé que dans circuit, mais le principe est en dessous)

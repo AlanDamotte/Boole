@@ -1,11 +1,11 @@
 package jus.aoo.boole.composant;
-import java.util.LinkedList;
+
 
 import jus.aoo.boole.port.*;
 
 public class Oux extends Transformateur{
 	public Oux(int numcomposant,Sortie sortie, Entree ent1, Entree ent2){
-		super("Oux",1,2,new LinkedList<Sortie>(),new LinkedList<Entree>());
+		super("Oux",new Sortie[1],new Entree[2]);
 	}
 	
 	//Operer

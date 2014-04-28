@@ -1,8 +1,5 @@
 package jus.aoo.boole.composant;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import jus.aoo.boole.port.Entree;
 import jus.aoo.boole.port.Sortie;
 
@@ -21,21 +18,21 @@ public abstract class $Composant implements _Composant{
 	//La liste des sorties et des entrées est utile pour accéder aux états de chacun d'entre eux
 	//Faire des tableaux pour les entrées et sorties
 	//Les constructeurs définiront ces tableaux en allouant les tableaux en fonction du nombre de cases
-	protected List<Sortie> sor_list = new LinkedList<Sortie>();
-	protected List<Entree> ent_list = new LinkedList<Entree>();	
+	protected Sortie sor_tab[];
+	protected Entree ent_tab[];	
 	//Infos complémentaires: quel attribut mettre ?
 	
 	protected $Composant (){
 		
 	}
 
-	public $Composant (String nom, int nb_sorties, int nb_entrees, List<Sortie> sor_list, List<Entree> ent_list){
+	public $Composant (String nom, Sortie sor_tab[], Entree ent_tab[]){
 		//this.num_composant=num_composant;
 		this.nom=nom;
-		this.nb_sorties=nb_sorties;
-		this.nb_entrees=nb_entrees;
-		this.sor_list=sor_list;
-		this.ent_list=ent_list;
+		this.nb_sorties=sor_tab.length;
+		this.nb_entrees=ent_tab.length;
+		this.sor_tab=sor_tab;
+		this.ent_tab=ent_tab;
 	}
 	
 	/*public int num_composant(){
