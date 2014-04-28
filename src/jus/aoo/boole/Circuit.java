@@ -25,13 +25,13 @@ public class Circuit implements _Operer{
 		// MEILLEUR IMPLEMENTATION => WHILE : ON S'ARRETE LORSQU'UN PORT N'EST PAS CONNECTE
 		for ($Composant comp : this.tab_composants) {
 			// FOR EACH A COMPLETER EN REGARDANT CHACUN DES PORTS
-			if(comp instanceof Generateur){
+			if(comp instanceof $Generateur){
 			
 			}
-			if(comp instanceof Recepteur){
+			if(comp instanceof $Recepteur){
 				
 			}
-			if(comp instanceof Transformateur){
+			if(comp instanceof $Transformateur){
 				
 			}
 			}
@@ -39,7 +39,7 @@ public class Circuit implements _Operer{
 		return b;
 	}
 	
-	// Vérifier dans le sujet si cette méthode est nécessaire
+	// Vï¿½rifier dans le sujet si cette mï¿½thode est nï¿½cessaire
 //	public void ajoute_composant($Composant composant){
 //	
 //	}

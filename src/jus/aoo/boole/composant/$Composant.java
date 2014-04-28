@@ -53,9 +53,6 @@ public abstract class $Composant implements _Composant{
 	}
 	
 	//La méthode operer ne sera implémentée réellement que dans les niveaux plus bas
-	public void operer(){
-		
-	}
 	
 	public Sortie[] sor_tab(){
 		Sortie[] res; 

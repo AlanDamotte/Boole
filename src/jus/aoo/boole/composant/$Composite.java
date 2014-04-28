@@ -20,6 +20,7 @@ public abstract class $Composite extends Circuit implements _Composant {
 	//protected List<Entree> ent_list = new LinkedList<Entree>();
 	//protected List<Sortie> sor_list = new LinkedList<Sortie>();	
 	
+	//Ci dessous: voir si Comp doit etre une abstract class ou si operer est defini a l'interieur
 	private class Comp extends $Composant{
 
 		public Comp (String nom){
