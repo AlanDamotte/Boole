@@ -17,19 +17,6 @@ public class Transformateur extends $Composant {
 		super(nom, sor_tab, ent_tab);
 	}
 	
-	public Sortie[] sor_tab(){
-			Sortie[] res; 
-			res=sor_tab.clone(); 
-			return res;
-	}
-	
-	public Entree[] ent_tab(){
-		Entree[] res; 
-		res=ent_tab.clone(); 
-		return res;
-	}
-	
-	
 	public void operer(){
 		super.operer();
 	}

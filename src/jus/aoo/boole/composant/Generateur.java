@@ -14,10 +14,4 @@ public class Generateur extends $Composant {
 		super(nom,sor_tab,new Entree[0]);
 		this.sor_tab=sor_tab;
 	}
-	
-	public Sortie[] sor_tab(){
-		Sortie[] res; 
-		res=sor_tab.clone(); 
-		return res;
-	}
 }

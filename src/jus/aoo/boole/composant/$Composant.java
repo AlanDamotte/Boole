@@ -56,4 +56,16 @@ public abstract class $Composant implements _Composant{
 	public void operer(){
 		
 	}
+	
+	public Sortie[] sor_tab(){
+		Sortie[] res; 
+		res=sor_tab.clone(); 
+		return res;
+	}
+
+	public Entree[] ent_tab(){
+		Entree[] res; 
+		res=ent_tab.clone(); 
+		return res;
+	}
 }
