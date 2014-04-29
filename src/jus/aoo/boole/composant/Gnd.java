@@ -6,7 +6,7 @@ import jus.aoo.boole.*;
 
 public class Gnd extends $Generateur{
 	public Gnd(){
-		super("Gnd",new Sortie[1]);
+		super("Gnd",new Port[1]);
 	}
 	
 	//sortie.set_etat(false);

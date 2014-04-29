@@ -13,7 +13,7 @@ public abstract class $Transformateur extends $Composant {
 			super();
 	}
 	
-	public $Transformateur (String nom, Sortie sor_tab[], Entree ent_tab[]){
+	public $Transformateur (String nom, Port sor_tab[], Port ent_tab[]){
 		super(nom, sor_tab, ent_tab);
 	}
 	

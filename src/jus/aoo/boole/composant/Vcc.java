@@ -2,12 +2,12 @@ package jus.aoo.boole.composant;
 
 
 import jus.aoo.boole.Niveau;
-import jus.aoo.boole.port.Sortie;
+import jus.aoo.boole.port.Port;
 
 public class Vcc extends $Generateur{
 	public Vcc(){
 		//La liste de sorties doit etre l'allocation du tableau
-		super("Vcc",new Sortie[1]);
+		super("Vcc",new Port[1]);
 	}
 
 	//Operer

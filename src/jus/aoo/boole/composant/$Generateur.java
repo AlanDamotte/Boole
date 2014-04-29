@@ -10,8 +10,8 @@ public abstract class $Generateur extends $Composant {
 		super();
 	}
 	
-	public $Generateur (String nom, Sortie sor_tab[]){
-		super(nom,sor_tab,new Entree[0]);
+	public $Generateur (String nom, Port sor_tab[]){
+		super(nom,sor_tab,new Port[0]);
 		this.sor_tab=sor_tab;
 	}
 }

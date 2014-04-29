@@ -1,8 +1,7 @@
 package jus.aoo.boole;
 
 import jus.aoo.boole.composant.*;
-import jus.aoo.boole.port.Entree;
-import jus.aoo.boole.port.Sortie;
+import jus.aoo.boole.port.*;
 
 public class Circuit implements _Operer{
 	
@@ -34,11 +33,11 @@ public class Circuit implements _Operer{
 		int j;
 		while (!b) {
 			$Composant comp = tab_comp[i];
-			Entree[] tab_ent = comp.ent_tab();
-			Sortie[] tab_sor = comp.sor_tab();
+			Port[] tab_ent = comp.ent_tab();
+			Port[] tab_sor = comp.sor_tab();
 			j=0;
 			while(!b){
-				Entree ent = tab_ent[j];
+				Port ent = tab_ent[j];
 				if((ent.get_etat()!= Niveau.Haut)||(ent.get_etat()!= Niveau.Bas)){
 					b = true;
 					j++;
@@ -46,7 +45,7 @@ public class Circuit implements _Operer{
 			}
 			j=0;
 			while(!b){
-				Sortie sor = tab_sor[j];
+				Port sor = tab_sor[j];
 				if((sor.get_etat()!= Niveau.Haut)||(sor.get_etat()!= Niveau.Bas)){
 					b = true;
 					j++;

@@ -9,8 +9,8 @@ public abstract class $Recepteur extends $Composant {
 		super();
 	}
 	
-	public $Recepteur (String nom, Entree ent_tab[]){
-		super(nom,new Sortie[0],ent_tab);
+	public $Recepteur (String nom, Port ent_tab[]){
+		super(nom,new Port[0],ent_tab);
 		this.ent_tab=ent_tab;
 	}
 }

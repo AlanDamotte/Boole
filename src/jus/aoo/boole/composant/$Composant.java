@@ -1,7 +1,6 @@
 package jus.aoo.boole.composant;
 
-import jus.aoo.boole.port.Entree;
-import jus.aoo.boole.port.Sortie;
+import jus.aoo.boole.port.*;
 
 
 public abstract class $Composant implements _Composant{
@@ -18,15 +17,15 @@ public abstract class $Composant implements _Composant{
 	//La liste des sorties et des entrées est utile pour accéder aux états de chacun d'entre eux
 	//Faire des tableaux pour les entrées et sorties
 	//Les constructeurs définiront ces tableaux en allouant les tableaux en fonction du nombre de cases
-	protected Sortie sor_tab[];
-	protected Entree ent_tab[];	
+	protected Port sor_tab[];
+	protected Port ent_tab[];	
 	//Infos complémentaires: quel attribut mettre ?
 	
 	protected $Composant (){
 		
 	}
 
-	public $Composant (String nom, Sortie sor_tab[], Entree ent_tab[]){
+	public $Composant (String nom, Port sor_tab[], Port ent_tab[]){
 		//this.num_composant=num_composant;
 		this.nom=nom;
 		this.nb_sorties=sor_tab.length;
@@ -54,14 +53,14 @@ public abstract class $Composant implements _Composant{
 	
 	//La méthode operer ne sera implémentée réellement que dans les niveaux plus bas
 	
-	public Sortie[] sor_tab(){
-		Sortie[] res; 
+	public Port[] sor_tab(){
+		Port[] res; 
 		res=sor_tab.clone(); 
 		return res;
 	}
 
-	public Entree[] ent_tab(){
-		Entree[] res; 
+	public Port[] ent_tab(){
+		Port[] res; 
 		res=ent_tab.clone(); 
 		return res;
 	}

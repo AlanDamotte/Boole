@@ -6,7 +6,7 @@ import jus.aoo.boole.port.*;
 
 public class Oux extends $Transformateur{
 	public Oux(){
-		super("Oux",new Sortie[1],new Entree[2]);
+		super("Oux",new Port[1],new Port[2]);
 	}
 	
 	//Operer
