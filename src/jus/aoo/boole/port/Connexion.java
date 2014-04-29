@@ -1,19 +1,21 @@
 package jus.aoo.boole.port;
 
 public class Connexion {
-	private int entree;
-	private int sortie;
+	private int num_composant;
+	private Entree entree;
 	
-	public int entree(){
-		return entree;
+	public Connexion get(){
+		Connexion res=new Connexion(this.num_composant, this.entree.get());
+		return res;
 	}
 	
-	public int sortie(){
-		return sortie;
-	}
-	
-	public Connexion(int entree, int sortie){
+	public void set(int num_composant, Entree entree){
+		this.num_composant=num_composant;
 		this.entree=entree;
-		this.sortie=sortie;
+	}
+	
+	public Connexion(int num_composant, Entree entree){
+		this.num_composant=num_composant;
+		this.entree=entree;
 	}
 }

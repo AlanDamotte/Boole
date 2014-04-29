@@ -4,8 +4,8 @@ import jus.aoo.boole.*;
 
 public abstract class $Port {
 	protected Niveau etat;
-	//Intéret identifiant?
-	//protected int identifiant;
+	//Identifiant correspond au numero associe auu port
+	protected int identifiant;
 	
 	public Niveau get_etat(){
 		return this.etat;
@@ -13,5 +13,13 @@ public abstract class $Port {
 	
 	public void set_etat(Niveau b){
 		this.etat=b;
+	}
+	
+	public int get_id(){
+		return this.identifiant;
+	}
+	
+	public void set_id(int b){
+		this.identifiant=b;
 	}
 }
