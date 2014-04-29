@@ -1,5 +1,6 @@
 package jus.aoo.boole.port;
 
+
 public class Connexion {
 	private int num_composant;
 	private Entree entree;

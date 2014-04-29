@@ -4,7 +4,7 @@ import jus.aoo.boole.*;
 
 public abstract class $Port {
 	protected Niveau etat;
-	//Identifiant correspond au numero associe auu port
+	//Identifiant correspond au numero associe au port
 	protected int identifiant;
 	
 	public Niveau get_etat(){

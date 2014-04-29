@@ -21,5 +21,4 @@ public class Sortie extends $Port{
 		res.set_connexion(this.get_connexion());
 		return res;
 	}
-
 }
