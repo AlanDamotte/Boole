@@ -7,10 +7,6 @@ public class Circuit implements _Operer{
 	
 	private String nom;
 	
-	public enum NiveauVisuel {
-		Eteint, Allume;
-	}
-	
 	//Tableau de composants
 	private $Composant tab_composants[];
 	

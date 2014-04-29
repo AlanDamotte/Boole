@@ -1,16 +1,16 @@
 package jus.aoo.boole.composant;
 
+import jus.aoo.boole.NiveauVisuel;
 import jus.aoo.boole.Niveau;
-import jus.aoo.boole.port.Entree;
-import jus.aoo.boole.port.Sortie;
+import jus.aoo.boole.port.Port;
 
 public class Led extends $Recepteur{
 	
 	//Niveau n'a pas sa place ici
-	//private Niveau niveau;
+	private NiveauVisuel ampoule;
 	
 	public Led(){
-		super("Led",new Entree[1]);
+		super("Led",new Port[1]);
 	}
 	
 	/*public Niveau get_niveau(){
@@ -24,13 +24,12 @@ public class Led extends $Recepteur{
 	
 	// A MODIFIER
 	public void operer(){
-//		if(ent_tab[0].get_etat()==Niveau.Haut){
-//			this.niveau=Circuit.Allume;
-//		}
-//		else{
-//			this.niveau=Circuit.Eteint;
-//		}
-//		super.ent_tab.add(ent_tab[0]);
+		if(ent_tab[0].get_etat()==Niveau.Haut){
+			this.ampoule=NiveauVisuel.Allume;
+		}
+		else{
+			this.ampoule=NiveauVisuel.Eteint;
+		}
 	}
 	
 }
