@@ -16,4 +16,5 @@ public abstract class $Transformateur extends $Composant {
 	public $Transformateur (String nom, Sortie sor_tab[], Entree ent_tab[]){
 		super(nom, sor_tab, ent_tab);
 	}
+	
 }

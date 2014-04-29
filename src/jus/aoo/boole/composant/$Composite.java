@@ -32,6 +32,12 @@ public abstract class $Composite extends Circuit implements _Composant {
 			super.nb_sorties=nb_sorties;
 		}
 		
+		// A MODIFIER
+		public void operer() {
+			
+		}
+		
+		
 	}
 	
 

@@ -1,10 +1,17 @@
 package jus.aoo.boole;
 
 import jus.aoo.boole.composant.*;
+import jus.aoo.boole.port.Entree;
+import jus.aoo.boole.port.Sortie;
 
 public class Circuit implements _Operer{
 	
 	private String nom;
+	
+	public enum NiveauVisuel {
+		Eteint, Allume;
+	}
+	
 	//Tableau de composants
 	private $Composant tab_composants[];
 	
@@ -20,22 +27,33 @@ public class Circuit implements _Operer{
 		this.nom=nom;
 	}
 	
-	public boolean est_ouvert(){
-		boolean b;
-		// MEILLEUR IMPLEMENTATION => WHILE : ON S'ARRETE LORSQU'UN PORT N'EST PAS CONNECTE
-		for ($Composant comp : this.tab_composants) {
-			// FOR EACH A COMPLETER EN REGARDANT CHACUN DES PORTS
-			if(comp instanceof $Generateur){
-			
+	public boolean est_ouvert(){		
+		boolean b = false;
+		$Composant[] tab_comp = this.tab_composants;
+		int i=0;
+		int j;
+		while (!b) {
+			$Composant comp = tab_comp[i];
+			Entree[] tab_ent = comp.ent_tab();
+			Sortie[] tab_sor = comp.sor_tab();
+			j=0;
+			while(!b){
+				Entree ent = tab_ent[j];
+				if((ent.get_etat()!= Niveau.Haut)||(ent.get_etat()!= Niveau.Bas)){
+					b = true;
+					j++;
+				}
 			}
-			if(comp instanceof $Recepteur){
-				
+			j=0;
+			while(!b){
+				Sortie sor = tab_sor[j];
+				if((sor.get_etat()!= Niveau.Haut)||(sor.get_etat()!= Niveau.Bas)){
+					b = true;
+					j++;
+				}
 			}
-			if(comp instanceof $Transformateur){
-				
+			i++;
 			}
-			}
-		b = false;
 		return b;
 	}
 	
@@ -55,7 +73,14 @@ public class Circuit implements _Operer{
 	
 	//Completer quand ce sera possible
 	public void operer(){
-		
+	}
+	
+	public void operer_circuit(){
+		$Composant[] tab_comp = this.tab_composants;
+		for (int i = 0; i < tab_comp.length; i++) {
+			$Composant comp = tab_comp[i];
+			comp.operer();
+		}
 	}
 	
 	public void affiche_circuit(){
