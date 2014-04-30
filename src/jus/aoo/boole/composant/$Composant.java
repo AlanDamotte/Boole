@@ -12,8 +12,6 @@ public abstract class $Composant implements _Composant{
 	//protected List<Entree> ent_list = new LinkedList<Entree>();
 	//protected List<Sortie> sor_list = new LinkedList<Sortie>();	
 	protected String nom;
-	protected int nb_sorties;
-	protected int nb_entrees;
 	//La liste des sorties et des entrées est utile pour accéder aux états de chacun d'entre eux
 	//Faire des tableaux pour les entrées et sorties
 	//Les constructeurs définiront ces tableaux en allouant les tableaux en fonction du nombre de cases
@@ -28,8 +26,6 @@ public abstract class $Composant implements _Composant{
 	public $Composant (String nom, Port sor_tab[], Port ent_tab[]){
 		//this.num_composant=num_composant;
 		this.nom=nom;
-		this.nb_sorties=sor_tab.length;
-		this.nb_entrees=ent_tab.length;
 		this.sor_tab=sor_tab;
 		this.ent_tab=ent_tab;
 	}
@@ -40,11 +36,11 @@ public abstract class $Composant implements _Composant{
 	}*/
 	
 	public int nb_entrees(){
-		return nb_entrees;
+		return ent_tab.length;
 	}
 	
 	public int nb_sorties(){
-		return nb_sorties;
+		return sor_tab.length;
 	}
 	
 	public String nom(){
