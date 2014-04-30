@@ -5,8 +5,6 @@ import jus.aoo.boole.port.*;
 
 public class Circuit implements _Operer{
 	
-	private String nom;
-	
 	private class comp_circuit extends Connexion{
 		private $Composant comp;
 		private Connexion connexions[];
@@ -24,6 +22,7 @@ public class Circuit implements _Operer{
 	
 	//Tableau de composants et connexions
 	private comp_circuit tab_composants[];
+	private String nom;
 	
 	//Circuit doit définir les différents niveaux et les connexions entre les composants. C'est lui qui utilise les cases
 	//allouées dans le tableau créé par le constructeur dans les composants.
@@ -33,10 +32,20 @@ public class Circuit implements _Operer{
 		this.nom="";
 	}
 	
-	public Circuit(String nom){
+	public Circuit(String nom, $Composant composants[]){
 		this.nom=nom;
+		this.tab_composants=new comp_circuit[composants.length];
+		int i;
+		for(i=0;i<composants.length;i++){
+			this.tab_composants[i]=new comp_circuit(composants[i]);
+		}
 	}
 	
+	public void connexion(int comp_sortie, int num_sortie, int comp_entree, int num_entree){
+		this.tab_composants[comp_sortie-1].add(num_sortie, comp_entree, num_entree);
+	}
+	
+	//A modifier
 	public boolean est_ouvert(){		
 		boolean b = false;
 		$Composant[] tab_comp = this.tab_composants;
@@ -93,7 +102,10 @@ public class Circuit implements _Operer{
 		}
 	}
 	
-	public void affiche_circuit(){
+	/**@overide
+	 */
+	public String toString(){
 		//COMPLETER
+		return "";
 	}
 }

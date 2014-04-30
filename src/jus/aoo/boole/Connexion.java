@@ -30,8 +30,13 @@ public class Connexion {
 		}
 		
 		//Redefinition de equals afin de simplifier les operations sur les listes par la suite
-		public boolean equals(Connexion_simple co){
-			return ( co.getComp()==this.getComp() && co.getEntree()==this.getEntree() );
+		public boolean equals(Object co){
+			if (co instanceof Connexion_simple){
+				return ( ((Connexion_simple)co).getComp()==this.getComp() && ((Connexion_simple)co).getEntree()==this.getEntree() );
+			}
+			else{
+				return false;
+			}
 		}
 	}
 	
