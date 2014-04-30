@@ -7,8 +7,23 @@ public class Circuit implements _Operer{
 	
 	private String nom;
 	
-	//Tableau de composants
-	private $Composant tab_composants[];
+	private class comp_circuit extends Connexion{
+		private $Composant comp;
+		private Connexion connexions[];
+		
+		public comp_circuit($Composant comp){
+			this.comp=comp;
+			this.connexions=new Connexion[comp.nb_sorties()];
+		}
+		
+		//Ajoute a la sortie designee une connexion entre comp et l'entree definie par num_composant et num_entree
+		public void add(int sortie,int num_composant, int num_entree){
+			this.connexions[sortie-1].add(num_composant, num_entree);
+		}
+	}
+	
+	//Tableau de composants et connexions
+	private comp_circuit tab_composants[];
 	
 	//Circuit doit définir les différents niveaux et les connexions entre les composants. C'est lui qui utilise les cases
 	//allouées dans le tableau créé par le constructeur dans les composants.

@@ -1,23 +1,59 @@
 package jus.aoo.boole;
 
-import jus.aoo.boole.port.*;
+import java.util.List;
+import java.util.LinkedList;
 
 public class Connexion {
-	private int num_composant;
-	private Port entree;
 	
-	public Connexion get(){
-		Connexion res=new Connexion(this.num_composant, this.entree.get());
-		return res;
+	//Connexion simple representant la connexion entre la sortie et une
+	//entree definie parson numero de composant et son numero d'entree
+	protected class Connexion_simple{
+		private int composant;
+		private int entree;
+		
+		public int getEntree(){
+			return entree;
+		}
+		
+		public int getComp(){
+			return composant;
+		}
+		
+		public void set(int composant, int entree){
+			this.composant=composant;
+			this.entree=entree;
+		}
+		
+		public Connexion_simple(int composant, int entree){
+			this.composant=composant;
+			this.entree=entree;
+		}
+		
+		//Redefinition de equals afin de simplifier les operations sur les listes par la suite
+		public boolean equals(Connexion_simple co){
+			return ( co.getComp()==this.getComp() && co.getEntree()==this.getEntree() );
+		}
 	}
 	
-	public void set(int num_composant, Port entree){
-		this.num_composant=num_composant;
-		this.entree=entree;
+	//Attribut definissant la liste des connexions associees a une sortie
+	protected List<Connexion_simple> connexions = new LinkedList<Connexion_simple>();;
+	
+	public Connexion(){
+		
 	}
 	
-	public Connexion(int num_composant, Port entree){
-		this.num_composant=num_composant;
-		this.entree=entree;
+	//Ajout d'une connexion sur la sortie
+	public void add(int composant, int entree){
+		Connexion_simple co=new Connexion_simple(composant,entree);
+		if(!this.connexions.contains(co)){
+			this.connexions.add(co);
+		}
 	}
+	
+	//Retrait d'une connexion sur la sortie
+	public void remove(int composant, int entree){
+		Connexion_simple co=new Connexion_simple(composant,entree);
+		this.connexions.remove(co);
+	}
+	
 }
