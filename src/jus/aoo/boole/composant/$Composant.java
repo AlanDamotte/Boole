@@ -1,6 +1,7 @@
 package jus.aoo.boole.composant;
 
 import jus.aoo.boole.port.*;
+import jus.aoo.boole.Niveau;
 
 
 public abstract class $Composant implements _Composant{
@@ -63,5 +64,24 @@ public abstract class $Composant implements _Composant{
 		Port[] res; 
 		res=ent_tab.clone(); 
 		return res;
+	}
+	
+	public boolean ports_entree_actifs(){
+		int i=0;
+		boolean b =true;
+		while((i<this.ent_tab.length) && b){
+			if(this.ent_tab[i].get_etat() == Niveau.Aucun){
+				b =false;
+			}
+			i++;
+		}
+		i=0;
+		while((i<this.sor_tab.length) && b){
+			if(this.sor_tab[i].get_etat() == Niveau.Aucun){
+				b =false;
+			}
+			i++;
+		}
+		return b;
 	}
 }

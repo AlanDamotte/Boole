@@ -33,6 +33,10 @@ public class Circuit implements _Operer{
 		//récupère les connexions sortante de ce composant
 		public Connexion[] getconnexions(){
 			Connexion[] connexion = new Connexion[this.connexions.length];
+			int i;
+			for(i=0;i<connexion.length;i++){
+				connexion[i]= this.connexions[i];
+			}
 			return connexion;
 		}
 	}
@@ -50,7 +54,7 @@ public class Circuit implements _Operer{
 	}
 	
 	public Circuit(String nom, $Composant composants[]){
-		this.nom=nom;
+		this.nom = nom;
 		this.tab_composants=new comp_circuit[composants.length];
 		int i;
 		for(i=0;i<composants.length;i++){
@@ -106,9 +110,23 @@ public class Circuit implements _Operer{
 		}*/
 	}
 	
-	
 	//Completer quand ce sera possible
-	public void operer(){
+	public void operer() throws Exception{
+		int i;
+		if(est_ouvert()){
+			throw new Exception("le circuit est ouvert");
+		}else{
+			for(i=0; i< this.tab_composants.length; i++){
+				if(this.tab_composants[i].getcomp() instanceof $Generateur){
+					this.tab_composants[i].getcomp().operer();
+				}
+			}
+			for(i=0; i< this.tab_composants.length; i++){
+				if(this.tab_composants[i].getcomp().ports_entree_actifs()){
+					this.tab_composants[i].getcomp().operer();
+				}
+			}
+		}
 	}
 	
 	public void operer_circuit(){
