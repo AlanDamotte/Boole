@@ -4,7 +4,7 @@ import jus.aoo.boole.port.*;
 import jus.aoo.boole.Niveau;
 
 
-public abstract class $Composant implements _Composant,Cloneable{
+public abstract class $Composant implements _Composant{
 	
 	//Num composant est initialisé dans circuit
 	
@@ -30,12 +30,11 @@ public abstract class $Composant implements _Composant,Cloneable{
 		this.sor_tab=sor_tab;
 		this.ent_tab=ent_tab;
 	}
-	
-	//Utilisé pour effectuer un accesseur à $Composant
-	public $Composant clone(){
-			return ($Composant)clone();
+	public $Composant ($Composant comp){
+		this.nom = comp.nom();
+		this.sor_tab = comp.sor_tab();
+		this.ent_tab = comp.ent_tab();
 	}
-	
 	/*public int num_composant(){
 		//num_composant est un integer, ainsi num_composant ne sera pas modifiable en donnant sa valeur telle quelle
 		return num_composant;
