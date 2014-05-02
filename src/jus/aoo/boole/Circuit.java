@@ -5,9 +5,9 @@ import jus.aoo.boole.port.*;
 
 public class Circuit implements _Operer{
 	
-	private class comp_circuit extends Connexion{
+	private class comp_circuit extends Connexion{ // les composants du circuit
 		private $Composant comp;
-		private Connexion connexions[];// liste de connexions sortantes
+		private Connexion connexions[];// tableau de connexions sortantes
 		
 		public comp_circuit($Composant comp){
 			this.comp=comp;

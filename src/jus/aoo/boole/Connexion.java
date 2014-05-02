@@ -8,8 +8,8 @@ public class Connexion {
 	//Connexion simple representant la connexion entre la sortie et une
 	//entree definie parson numero de composant et son numero d'entree
 	protected class Connexion_simple{
-		private int composant;
-		private int entree;
+		private int composant; // composant lié à l'entrée
+		private int entree; 
 		
 		public int getEntree(){
 			return entree;
