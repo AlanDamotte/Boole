@@ -27,7 +27,7 @@ public class Circuit implements _Operer{
 		
 		
 		public $Composant getcomp(){
-			return this.comp;
+			return this.comp.clone();
 		}
 		
 		//récupère les connexions sortante de ce composant
