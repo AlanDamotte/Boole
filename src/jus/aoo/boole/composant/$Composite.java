@@ -26,10 +26,10 @@ public abstract class $Composite extends Circuit implements _Composant {
 		public Comp (String nom){
 			super.nom=nom;
 		}
-		public Comp (String nom, int nb_entrees, int nb_sorties){
+		public Comp (String nom,Port sor_tab[], Port ent_tab[]){
 			super.nom=nom;
-			super.nb_entrees=nb_entrees;
-			super.nb_sorties=nb_sorties;
+			super.ent_tab=ent_tab;
+			super.sor_tab=sor_tab;
 		}
 		
 		// A MODIFIER
@@ -48,8 +48,8 @@ public abstract class $Composite extends Circuit implements _Composant {
 	public $Composite(String nom){
 		this.comp=new Comp(nom);
 	}
-	public $Composite(String nom, int nb_entrees, int nb_sorties){
-		this.comp=new Comp(nom,nb_entrees, nb_sorties);
+	public $Composite(String nom, Port sor_tab[], Port ent_tab[]){
+		this.comp=new Comp(nom,sor_tab,ent_tab);
 	}
 	//Infos complémentaires: quel attribut mettre ?
 	
