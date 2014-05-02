@@ -9,6 +9,7 @@ public class Circuit implements _Operer{
 		private $Composant comp;
 		private Connexion connexions[];// tableau de connexions sortantes
 		
+		
 		public comp_circuit($Composant comp){
 			this.comp=comp;
 			this.connexions=new Connexion[comp.nb_sorties()];
@@ -17,6 +18,10 @@ public class Circuit implements _Operer{
 		//Ajoute a la sortie designee une connexion entre comp et l'entree definie par num_composant et num_entree
 		public void add(int sortie,int num_composant, int num_entree){
 			this.connexions[sortie-1].add(num_composant, num_entree);
+		}
+		
+		public $Composant getcomp(){
+			return new $Composant(this.comp);
 		}
 	}
 	
@@ -48,13 +53,13 @@ public class Circuit implements _Operer{
 	//A modifier
 	public boolean est_ouvert(){		
 		boolean b = false;
-		$Composant[] tab_comp = this.tab_composants;
+		comp_circuit[] tab_comp = this.tab_composants;
 		int i=0;
 		int j;
-		while (!b) {
-			$Composant comp = tab_comp[i];
-			Port[] tab_ent = comp.ent_tab();
-			Port[] tab_sor = comp.sor_tab();
+		while ((!b )&& (i< tab_comp.length)) {
+			comp_circuit comp = tab_comp[i];
+			Port[] tab_ent = comp.comp.ent_tab();
+			Port[] tab_sor = comp.comp.sor_tab();
 			j=0;
 			while(!b){
 				Port ent = tab_ent[j];
@@ -66,13 +71,13 @@ public class Circuit implements _Operer{
 			j=0;
 			while(!b){
 				Port sor = tab_sor[j];
-				if((sor.get_etat()!= Niveau.Haut)||(sor.get_etat()!= Niveau.Bas)){
+				if((sor.get_etat()!= Niveau.Haut)||(sor.get_etat()!= .Bas)){
 					b = true;
 					j++;
 				}
 			}
 			i++;
-			}
+		}
 		return b;
 	}
 	
