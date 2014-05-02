@@ -70,8 +70,8 @@ public class Circuit implements _Operer{
 		int j;
 		while ((!b )&& (i< tab_comp.length)) {
 			comp_circuit comp = new comp_circuit( tab_comp[i] );
-			Port[] tab_ent = comp.comp.ent_tab();
-			Port[] tab_sor = comp.comp.sor_tab();
+			Port[] tab_ent = comp.getcomp().ent_tab();
+			Port[] tab_sor = comp.getcomp().sor_tab();
 			j=0;
 			while((!b) && (j< tab_ent.length)){
 				Port ent = tab_ent[j];
@@ -112,10 +112,10 @@ public class Circuit implements _Operer{
 	}
 	
 	public void operer_circuit(){
-		$Composant[] tab_comp = this.tab_composants;
+		comp_circuit[] tab_comp = this.tab_composants;
 		for (int i = 0; i < tab_comp.length; i++) {
-			$Composant comp = tab_comp[i];
-			comp.operer();
+			comp_circuit comp = tab_comp[i];
+			comp.getcomp().operer();
 		}
 	}
 	
