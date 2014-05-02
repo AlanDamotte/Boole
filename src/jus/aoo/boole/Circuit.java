@@ -7,7 +7,7 @@ public class Circuit implements _Operer{
 	
 	private class comp_circuit extends Connexion{
 		private $Composant comp;
-		private Connexion connexions[];
+		private Connexion connexions[];// liste de connexions sortantes
 		
 		public comp_circuit($Composant comp){
 			this.comp=comp;
