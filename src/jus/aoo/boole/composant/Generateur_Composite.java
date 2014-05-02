@@ -17,8 +17,8 @@ public class Generateur_Composite extends $Composite {
 		super(nom);
 	}
 	
-	public Generateur_Composite (String nom, int nb_sorties, int nb_entrees, List<Port> sor_list, List<Port> ent_list){
-		super(nom,nb_sorties,nb_entrees);
+	public Generateur_Composite (String nom, Port sor_tab[], Port ent_tab[], List<Port> sor_list, List<Port> ent_list){
+		super(nom,sor_tab,ent_tab);
 		this.sor_list=sor_list;
 		this.ent_list=ent_list;
 	}
