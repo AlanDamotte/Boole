@@ -66,7 +66,7 @@ public class Circuit implements _Operer{
 		this.tab_composants[comp_sortie-1].add(num_sortie, comp_entree, num_entree);
 	}
 	
-	//A modifier
+	//A tester
 	public boolean est_ouvert(){		
 		boolean b = false;
 		comp_circuit[] tab_comp = this.tab_composants;
