@@ -3,8 +3,6 @@ package jus.aoo.boole;
 import jus.aoo.boole.composant.*;
 import jus.aoo.boole.port.*;
 
-import java.lang.Throwable;
-
 //extends connexion?
 public class Circuit extends Connexion implements _Operer{
 	
