@@ -1,15 +1,14 @@
 package jus.aoo.boole;
 
-import jus.aoo.annuaire.Personne;
 import jus.aoo.boole.composant.*;
 import jus.aoo.boole.port.*;
 
 import java.lang.Throwable;
 
 //extends connexion?
-public class Circuit implements _Operer{
+public class Circuit extends Connexion implements _Operer{
 	
-	private class comp_circuit extends Connexion{ // les composants du circuit
+	private class comp_circuit{ // les composants du circuit
 		
 		private boolean op;
 		private $Composant comp;
@@ -57,13 +56,8 @@ public class Circuit implements _Operer{
 			return connexion;
 		}
 		
-		public void modif_connexions(int x){
-			int comp,ent;
-			for (Connexion_simple c : this.connexions[x].connexions){
-				comp=c.getComp();
-				ent=c.getEntree();
-				tab_composants[x].
-			}
+		public void set_niveau(int num_entree, Niveau n){
+			this.comp.set_port(true,num_entree, n);
 		}
 	}
 	
@@ -71,7 +65,7 @@ public class Circuit implements _Operer{
 	private comp_circuit tab_composants[];
 	private String nom;
 	
-	//Circuit doit définir les différents niveaux et les connexions entre les composants. C'est lui qui utilise les cases
+	//Circuit doit definir les différents niveaux et les connexions entre les composants. C'est lui qui utilise les cases
 	//allouées dans le tableau créé par le constructeur dans les composants.
 	
 
@@ -151,10 +145,17 @@ public class Circuit implements _Operer{
 	private void operer_comp(int x){
 		Connexion[] co;
 		int i;
+		int comp,ent;
+		Niveau n;
 		this.tab_composants[x].operer();
 		co=this.tab_composants[x].getconnexions();
 		for(i=0;i<co.length;i++){
-			this.tab_composants[x].modif_connexions(i);
+			n=tab_composants[x].getcomp().sor_tab()[i].get_etat();
+			for (Connexion_simple c : co[i].connexions){
+				comp=c.getComp();
+				ent=c.getEntree();
+				this.tab_composants[comp].set_niveau(ent, n);
+			}
 		}
 	}
 	

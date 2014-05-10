@@ -93,8 +93,13 @@ public abstract class $Composant implements _Composant{
 		return b;
 	}
 	
-	public void set_port(int num_port, Niveau n){
-		this.sor_tab[num_port].set_etat(n);
+	public void set_port(boolean entsor, int num_port, Niveau n){
+		if(entsor){
+			this.sor_tab[num_port].set_etat(n);
+		}
+		else{
+			this.ent_tab[num_port].set_etat(n);
+		}
 	}
 	
 }
