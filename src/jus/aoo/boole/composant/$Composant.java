@@ -29,7 +29,6 @@ public abstract class $Composant implements _Composant{
 		this.nom=nom;
 		this.sor_tab=sor_tab;
 		this.ent_tab=ent_tab;
-		this.sor_tab[0].set_etat(Niveau.Aucun);
 	}
 	public $Composant ($Composant comp){
 		this.nom = comp.nom();

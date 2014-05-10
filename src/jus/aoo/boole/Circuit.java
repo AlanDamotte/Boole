@@ -21,6 +21,7 @@ public class Circuit extends Connexion implements _Operer{
 		public comp_circuit(comp_circuit compc){
 			this.comp=compc.getcomp();
 			this.connexions=compc.getconnexions();
+			this.op=compc.get_op();
 		}
 		
 		//Ajoute a la sortie designee une connexion entre comp et l'entree definie par num_composant et num_entree
