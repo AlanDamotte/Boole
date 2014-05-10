@@ -1,18 +1,24 @@
 package jus.aoo.boole;
 
+import jus.aoo.annuaire.Personne;
 import jus.aoo.boole.composant.*;
 import jus.aoo.boole.port.*;
 
+import java.lang.Throwable;
+
+//extends connexion?
 public class Circuit implements _Operer{
 	
 	private class comp_circuit extends Connexion{ // les composants du circuit
 		
+		private boolean op;
 		private $Composant comp;
 		private Connexion connexions[];// tableau de connexions sortantes
 		
 		public comp_circuit($Composant comp){
 			this.comp=comp;
 			this.connexions=new Connexion[comp.nb_sorties()];
+			this.op=true;
 		}
 		
 		public comp_circuit(comp_circuit compc){
@@ -22,9 +28,20 @@ public class Circuit implements _Operer{
 		
 		//Ajoute a la sortie designee une connexion entre comp et l'entree definie par num_composant et num_entree
 		public void add(int sortie,int num_composant, int num_entree){
-			this.connexions[sortie-1].add(num_composant, num_entree);
+			this.connexions[sortie].add(num_composant, num_entree);
 		}
 		
+		public boolean get_op(){
+			return op;
+		}
+		
+		public void set_op(boolean b){
+			this.op=b;
+		}
+		
+		public void operer(){
+			this.comp.operer();
+		}
 		
 		public $Composant getcomp(){
 			return this.comp.clone();
@@ -38,6 +55,15 @@ public class Circuit implements _Operer{
 				connexion[i]= this.connexions[i];
 			}
 			return connexion;
+		}
+		
+		public void modif_connexions(int x){
+			int comp,ent;
+			for (Connexion_simple c : this.connexions[x].connexions){
+				comp=c.getComp();
+				ent=c.getEntree();
+				tab_composants[x].
+			}
 		}
 	}
 	
@@ -63,7 +89,7 @@ public class Circuit implements _Operer{
 	}
 	
 	public void connexion(int comp_sortie, int num_sortie, int comp_entree, int num_entree){
-		this.tab_composants[comp_sortie-1].add(num_sortie, comp_entree, num_entree);
+		this.tab_composants[comp_sortie].add(num_sortie, comp_entree, num_entree);
 	}
 	
 	//A tester
@@ -97,35 +123,48 @@ public class Circuit implements _Operer{
 		return b;
 	}
 	
-	// V�rifier dans le sujet si cette m�thode est n�cessaire
-//	public void ajoute_composant($Composant composant){
-//	
-//	}
+	//Permet de trouver le prochain composant où il est possible d'effectuer operer
+	private int trouve_comp(){
+		int i,j;
+		boolean b;
+		i=0;
+		while(i< this.tab_composants.length){
+			if(this.tab_composants[i].get_op()){
+				j=0;
+				b=false;
+				Port[] tab_ent = this.tab_composants[i].getcomp().ent_tab();
+				while(!b && j<tab_ent.length){
+					if((tab_ent[j].get_etat()!= Niveau.Haut)||(tab_ent[j].get_etat()!= Niveau.Bas)){
+						b = true;
+						j++;
+					}
+				}
+				if(b){
+					break;
+				}
+			}
+			i++;
+		}
+		return i;
+	}
 	
-	//Completer quand ce sera possible
-	public void operer() throws Exception{
+	private void operer_comp(int x){
+		Connexion[] co;
 		int i;
-		if(est_ouvert()){
-			throw new Exception("le circuit est ouvert");
-		}else{
-			for(i=0; i< this.tab_composants.length; i++){
-				if(this.tab_composants[i].getcomp() instanceof $Generateur){
-					this.tab_composants[i].getcomp().operer();
-				}
-			}
-			for(i=0; i< this.tab_composants.length; i++){
-				if(this.tab_composants[i].getcomp().ports_entree_actifs()){
-					this.tab_composants[i].getcomp().operer();
-				}
-			}
+		this.tab_composants[x].operer();
+		co=this.tab_composants[x].getconnexions();
+		for(i=0;i<co.length;i++){
+			this.tab_composants[x].modif_connexions(i);
 		}
 	}
 	
-	public void operer_circuit(){
-		comp_circuit[] tab_comp = this.tab_composants;
-		for (int i = 0; i < tab_comp.length; i++) {
-			comp_circuit comp = tab_comp[i];
-			comp.getcomp().operer();
+	public void operer(){
+		int i=trouve_comp();
+		//Lorsque i est égal à tab_composants.length, on ne peut plus effectuer l'opération operer
+		while(i!=this.tab_composants.length){
+			this.tab_composants[i].set_op(false);
+			this.operer_comp(i);
+			i=trouve_comp();
 		}
 	}
 	

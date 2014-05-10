@@ -4,8 +4,14 @@ import jus.aoo.boole.port.Port;
 import jus.aoo.boole.*;
 
 public class Itr extends $Generateur{
+	
 	public Itr(){
 		super("Itr",new Port[1]);
+	}
+	
+	public Itr(Niveau n){
+		super("Itr",new Port[1]);
+		this.sor_tab[0].set_etat(n);
 	}
 	
 	//Operer (niveau ne doit etre utilisé que dans circuit, mais le principe est en dessous)

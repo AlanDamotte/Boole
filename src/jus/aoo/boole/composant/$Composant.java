@@ -29,6 +29,7 @@ public abstract class $Composant implements _Composant{
 		this.nom=nom;
 		this.sor_tab=sor_tab;
 		this.ent_tab=ent_tab;
+		this.sor_tab[0].set_etat(Niveau.Aucun);
 	}
 	public $Composant ($Composant comp){
 		this.nom = comp.nom();
@@ -79,6 +80,8 @@ public abstract class $Composant implements _Composant{
 			}
 			i++;
 		}
+		/*
+		 //Pourquoi vérifier les sorties?
 		i=0;
 		while((i<this.sor_tab.length) && b){
 			if(this.sor_tab[i].get_etat() == Niveau.Aucun){
@@ -86,6 +89,12 @@ public abstract class $Composant implements _Composant{
 			}
 			i++;
 		}
+		*/
 		return b;
 	}
+	
+	public void set_port(int num_port, Niveau n){
+		this.sor_tab[num_port].set_etat(n);
+	}
+	
 }
