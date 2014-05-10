@@ -27,7 +27,9 @@ public class Led extends $Recepteur{
 			this.ampoule=NiveauVisuel.Allume;
 		}
 		else{
-			this.ampoule=NiveauVisuel.Eteint;
+			if(ent_tab[0].get_etat()==Niveau.Bas){
+				this.ampoule=NiveauVisuel.Eteint;
+			}
 		}
 	}
 	

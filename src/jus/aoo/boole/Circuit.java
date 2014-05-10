@@ -8,6 +8,7 @@ public class Circuit extends Connexion implements _Operer{
 	
 	private class comp_circuit{ // les composants du circuit
 		
+		private int num_composant;
 		private boolean op;
 		private $Composant comp;
 		private Connexion connexions[];// tableau de connexions sortantes
@@ -20,12 +21,7 @@ public class Circuit extends Connexion implements _Operer{
 				connexions[i]=new Connexion();
 			}
 			this.op=true;
-		}
-		
-		public comp_circuit(comp_circuit compc){
-			this.comp=compc.getcomp();
-			this.connexions=compc.getconnexions();
-			this.op=compc.get_op();
+			this.num_composant=-1;
 		}
 		
 		//Ajoute a la sortie designee une connexion entre comp et l'entree definie par num_composant et num_entree
@@ -62,10 +58,19 @@ public class Circuit extends Connexion implements _Operer{
 		public void set_niveau(int num_entree, Niveau n){
 			this.comp.set_port(true,num_entree, n);
 		}
+		
+		public void set_num_comp(int num_comp){
+			this.num_composant=num_comp;
+		}
+		
+		public int get_num_comp(){
+			return this.num_composant;
+		}
 	}
 	
 	//Tableau de composants et connexions
 	private comp_circuit tab_composants[];
+	private boolean mis_en_marche=false;
 	private String nom;
 	
 	//Circuit doit definir les différents niveaux et les connexions entre les composants. C'est lui qui utilise les cases
@@ -100,29 +105,10 @@ public class Circuit extends Connexion implements _Operer{
 	
 	//A tester
 	public boolean est_ouvert(){
-		boolean b = false;
-		comp_circuit[] tab_comp = this.tab_composants.clone();
 		int i=0;
-		int j;
-		while ((!b )&& (i< tab_comp.length)) {
-			comp_circuit comp = new comp_circuit( tab_comp[i] );
-			Port[] tab_ent = comp.getcomp().ent_tab();
-			Port[] tab_sor = comp.getcomp().sor_tab();
-			j=0;
-			while((!b) && (j< tab_ent.length)){
-				Port ent = tab_ent[j];
-				if(ent.get_etat()== Niveau.Aucun){
-					b = true;
-				}
-				j++;
-			}
-			j=0;
-			while((!b) && (j< tab_sor.length)){
-				if(tab_comp[i].getconnexions()[j].connexions.isEmpty()){
-					b = true;
-				}
-				j++;
-			}
+		boolean b=false;
+		while(!b && i<this.tab_composants.length){
+			b=(this.tab_composants[i].get_num_comp()==-1);
 			i++;
 		}
 		return b;
@@ -144,7 +130,8 @@ public class Circuit extends Connexion implements _Operer{
 					}
 					j++;
 				}
-				if(b){
+				
+				if(!b){
 					break;
 				}
 			}
@@ -161,7 +148,6 @@ public class Circuit extends Connexion implements _Operer{
 		this.tab_composants[x].operer();
 		co=this.tab_composants[x].getconnexions();
 		for(i=0;i<co.length;i++){
-			this.tab_composants[x].operer();
 			n=tab_composants[x].getcomp().sor_tab()[i].get_etat();
 			for (Connexion_simple c : co[i].connexions){
 				comp=c.getComp();
@@ -171,15 +157,36 @@ public class Circuit extends Connexion implements _Operer{
 		}
 	}
 	
-	public void operer(){
+	private void mise_en_marche(){
 		int i=trouve_comp();
+		int cpt=0;
 		//Lorsque i est égal à tab_composants.length, on ne peut plus effectuer l'opération operer
 		while(i!=this.tab_composants.length){
 			this.tab_composants[i].set_op(false);
+			this.tab_composants[i].set_num_comp(cpt);
 			this.operer_comp(i);
 			i=trouve_comp();
+			cpt++;
 		}
-		
+	}
+	
+	public void operer(){
+		if (this.mis_en_marche){
+			int i=0;
+			int j;
+			while(i<this.tab_composants.length){
+				j=0;
+				while(j<this.tab_composants.length && this.tab_composants[j].get_num_comp()!=i){
+					j++;
+				}
+				if (j<this.tab_composants.length){operer_comp(j);}
+				i++;
+			}
+		}
+		else{
+			mise_en_marche();
+			this.mis_en_marche=true;
+		}
 	}
 	
 	@Override
@@ -188,7 +195,7 @@ public class Circuit extends Connexion implements _Operer{
 		String s=new String(this.nom+"[\n");
 		int i,j,comp,ent;
 		for(i=0;i<this.tab_composants.length;i++){
-			s=s+"<"+i+"|"+this.tab_composants[i].getcomp().toString();
+			s=s+"<"+tab_composants[i].get_num_comp()+"|"+this.tab_composants[i].getcomp().toString();
 			if(this.tab_composants[i].getcomp().nb_sorties()!=0){
 				s=s+"->";
 				co=this.tab_composants[i].getconnexions();
