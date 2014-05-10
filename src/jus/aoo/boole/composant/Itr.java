@@ -11,11 +11,6 @@ public class Itr extends $Generateur{
 		super("Itr",new Port[1]);
 	}
 	
-	public Itr(Niveau n){
-		super("Itr",new Port[1]);
-		this.sor_tab[0].set_etat(n);
-	}
-	
 	@Override
 	public String toString(){
 		return super.toString()+"{"+this.sor_tab()[0].get_etat().toString()+"}";

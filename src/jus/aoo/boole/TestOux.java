@@ -28,7 +28,7 @@ public class TestOux{
 		cir.modif_itr(1, Niveau.Bas);
 		cir.operer();
 		System.out.println(cir.toString()+"\n");
-		
+		/*
         cir.modif_itr(0, Niveau.Bas);
 		cir.modif_itr(1, Niveau.Haut);
 		cir.operer();
@@ -43,6 +43,7 @@ public class TestOux{
 		cir.modif_itr(1, Niveau.Haut);
 		cir.operer();
 		System.out.println(cir.toString());
+		*/
 	}
     
 	public static void main(String[] args) throws Exception{

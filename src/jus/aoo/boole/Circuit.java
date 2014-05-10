@@ -15,6 +15,10 @@ public class Circuit extends Connexion implements _Operer{
 		public comp_circuit($Composant comp){
 			this.comp=comp;
 			this.connexions=new Connexion[comp.nb_sorties()];
+			int i;
+			for(i=0;i<connexions.length;i++){
+				connexions[i]=new Connexion();
+			}
 			this.op=true;
 		}
 		
@@ -107,7 +111,7 @@ public class Circuit extends Connexion implements _Operer{
 			j=0;
 			while((!b) && (j< tab_ent.length)){
 				Port ent = tab_ent[j];
-				if((ent.get_etat()!= Niveau.Haut)&&(ent.get_etat()!= Niveau.Bas)){
+				if(ent.get_etat()== Niveau.Aucun){
 					b = true;
 				}
 				j++;
@@ -135,10 +139,10 @@ public class Circuit extends Connexion implements _Operer{
 				b=false;
 				Port[] tab_ent = this.tab_composants[i].getcomp().ent_tab();
 				while(!b && j<tab_ent.length){
-					if((tab_ent[j].get_etat()!= Niveau.Haut)||(tab_ent[j].get_etat()!= Niveau.Bas)){
+					if(tab_ent[j].get_etat()== Niveau.Aucun){
 						b = true;
-						j++;
 					}
+					j++;
 				}
 				if(b){
 					break;
@@ -194,15 +198,15 @@ public class Circuit extends Connexion implements _Operer{
 						for (Connexion_simple c : co[j].connexions){
 							comp=c.getComp();
 							ent=c.getEntree();
-							s=comp+"#"+ent+",";
+							s=s+comp+"#"+ent+",";
 						}
-						s=s.substring(1)+")"+",";
+						s=/*s.substring(1)+*/s+")"+",";
 					}
 				}
-				s=s.substring(1);
+				//s=s.substring(1);
 			}
 			s=s+">\n";
 		}
-		return s+"\n]";
+		return s+"]";
 	}
 }

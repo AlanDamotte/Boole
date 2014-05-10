@@ -42,10 +42,10 @@ public class Connexion {
 	}
 	
 	//Attribut definissant la liste des connexions associees a une sortie
-	protected List<Connexion_simple> connexions = new LinkedList<Connexion_simple>();;
+	protected List<Connexion_simple> connexions;
 	
 	public Connexion(){
-		
+		connexions= new LinkedList<Connexion_simple>();
 	}
 	
 	//Ajout d'une connexion sur la sortie

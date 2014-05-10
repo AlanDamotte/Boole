@@ -29,15 +29,19 @@ public abstract class $Composant implements _Composant{
 		this.nom=nom;
 		this.sor_tab=sor_tab;
 		this.ent_tab=ent_tab;
-	}
-	public $Composant ($Composant comp){
-		this.nom = comp.nom();
-		this.sor_tab = comp.sor_tab();
-		this.ent_tab = comp.ent_tab();
+		int i;
+		for(i=0;i<ent_tab.length;i++){
+			ent_tab[i]=new Port();
+		}
+		for(i=0;i<sor_tab.length;i++){
+			sor_tab[i]=new Port();
+		}
 	}
 	
-	public $Composant clone(){
-		return ($Composant)clone();
+	//ATTENTION: Ce clone n'est pas une copie mais l'original, étant donné qu'il était difficile de l'implémenter autrement
+	@Override
+	public $Composant clone() {
+		return this;
 	}
 	/*public int num_composant(){
 		//num_composant est un integer, ainsi num_composant ne sera pas modifiable en donnant sa valeur telle quelle
@@ -94,10 +98,10 @@ public abstract class $Composant implements _Composant{
 	
 	public void set_port(boolean entsor, int num_port, Niveau n){
 		if(entsor){
-			this.sor_tab[num_port].set_etat(n);
+			this.ent_tab[num_port].set_etat(n);
 		}
 		else{
-			this.ent_tab[num_port].set_etat(n);
+			this.sor_tab[num_port].set_etat(n);
 		}
 	}
 	

@@ -10,6 +10,7 @@ public class Led extends $Recepteur{
 	
 	public Led(){
 		super("Led",new Port[1]);
+		this.ampoule=NiveauVisuel.Eteint;
 	}
 	
 	public NiveauVisuel get(){
