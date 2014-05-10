@@ -102,4 +102,9 @@ public abstract class $Composant implements _Composant{
 		}
 	}
 	
+	@Override
+	public String toString(){
+		return this.nom+"("+this.ent_tab().length+","+this.sor_tab().length+")";
+	}
+	
 }

@@ -99,18 +99,17 @@ public class Circuit extends Connexion implements _Operer{
 			j=0;
 			while((!b) && (j< tab_ent.length)){
 				Port ent = tab_ent[j];
-				if((ent.get_etat()!= Niveau.Haut)||(ent.get_etat()!= Niveau.Bas)){
+				if((ent.get_etat()!= Niveau.Haut)&&(ent.get_etat()!= Niveau.Bas)){
 					b = true;
-					j++;
 				}
+				j++;
 			}
 			j=0;
 			while((!b) && (j< tab_sor.length)){
-				Port sor = tab_sor[j];
-				if((sor.get_etat()!= Niveau.Haut)||(sor.get_etat()!= Niveau.Bas)){
+				if(tab_comp[i].getconnexions()[j].connexions.isEmpty()){
 					b = true;
-					j++;
 				}
+				j++;
 			}
 			i++;
 		}
@@ -150,6 +149,7 @@ public class Circuit extends Connexion implements _Operer{
 		this.tab_composants[x].operer();
 		co=this.tab_composants[x].getconnexions();
 		for(i=0;i<co.length;i++){
+			this.tab_composants[x].operer();
 			n=tab_composants[x].getcomp().sor_tab()[i].get_etat();
 			for (Connexion_simple c : co[i].connexions){
 				comp=c.getComp();
@@ -167,12 +167,34 @@ public class Circuit extends Connexion implements _Operer{
 			this.operer_comp(i);
 			i=trouve_comp();
 		}
+		
 	}
 	
-	/**@overide
-	 */
+	@Override
 	public String toString(){
-		//COMPLETER
-		return "";
+		Connexion[] co;
+		String s=new String(this.nom+"[\n");
+		int i,j,comp,ent;
+		for(i=0;i<this.tab_composants.length;i++){
+			s=s+"<"+i+"|"+this.tab_composants[i].getcomp().toString();
+			if(this.tab_composants[i].getcomp().nb_sorties()!=0){
+				s=s+"->";
+				co=this.tab_composants[i].getconnexions();
+				for(j=0;j<this.tab_composants[i].getcomp().sor_tab().length;j++){
+					if(!co[j].connexions.isEmpty()){
+						s=s+"#"+j+"(";
+						for (Connexion_simple c : co[j].connexions){
+							comp=c.getComp();
+							ent=c.getEntree();
+							s=comp+"#"+ent+",";
+						}
+						s=s.substring(1)+")"+",";
+					}
+				}
+				s=s.substring(1);
+			}
+			s=s+">\n";
+		}
+		return s+"\n]";
 	}
 }

@@ -16,6 +16,11 @@ public class Led extends $Recepteur{
 		return this.ampoule;
 	}
 	
+	@Override
+	public String toString(){
+		return super.toString()+"{"+ampoule.toString()+"}";
+	}
+	
 	public void operer(){
 		if(ent_tab[0].get_etat()==Niveau.Haut){
 			this.ampoule=NiveauVisuel.Allume;

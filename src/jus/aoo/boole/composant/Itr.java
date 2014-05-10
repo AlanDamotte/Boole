@@ -14,6 +14,11 @@ public class Itr extends $Generateur{
 		this.sor_tab[0].set_etat(n);
 	}
 	
+	@Override
+	public String toString(){
+		return super.toString()+"{"+this.sor_tab()[0].get_etat().toString()+"}";
+	}
+	
 	//Operer (niveau ne doit etre utilisé que dans circuit, mais le principe est en dessous)
 	//if(niveau==Niveau.Haut){sortie.set_etat(true);}
 	//else if(niveau==Niveau.Bas){sortie.set_etat(false);}
