@@ -6,6 +6,10 @@ public class Port {
 	protected Niveau etat;
 	//Identifiant correspond au numero associe au port et est défini par l'indice du tableau dans lequel il se trouve
 	
+	public Port(){
+		this.etat=Niveau.Aucun;
+	}
+	
 	public Niveau get_etat(){
 		return this.etat;
 	}

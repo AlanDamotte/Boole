@@ -67,9 +67,9 @@ public class Circuit implements _Operer{
 	}
 	
 	//A tester
-	public boolean est_ouvert(){		
+	public boolean est_ouvert(){
 		boolean b = false;
-		comp_circuit[] tab_comp = this.tab_composants;
+		comp_circuit[] tab_comp = this.tab_composants.clone();
 		int i=0;
 		int j;
 		while ((!b )&& (i< tab_comp.length)) {
@@ -85,7 +85,7 @@ public class Circuit implements _Operer{
 				}
 			}
 			j=0;
-			while((!b) && (j< tab_ent.length)){
+			while((!b) && (j< tab_sor.length)){
 				Port sor = tab_sor[j];
 				if((sor.get_etat()!= Niveau.Haut)||(sor.get_etat()!= Niveau.Bas)){
 					b = true;
@@ -101,14 +101,6 @@ public class Circuit implements _Operer{
 //	public void ajoute_composant($Composant composant){
 //	
 //	}
-	
-	public void supprime(int num_composant){
-		/*for ($Composant comp : this.tab_composants) {
-			if (comp.==num_composant){
-				liste_composants.remove(comp);
-			}
-		}*/
-	}
 	
 	//Completer quand ce sera possible
 	public void operer() throws Exception{
