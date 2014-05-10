@@ -9,11 +9,11 @@ public class TestOux{
 	private Circuit cir;
 	
 	public TestOux(){
-
+		Oux xor = new Oux();
 		Itr int1=new Itr();
 		Itr int2=new Itr();
 		Led l= new Led();
-		Oux xor = new Oux();
+	
 		
 		$Composant tabcomp[]={int1,int2,xor,l};
 		cir= new Circuit("TestOux",tabcomp);
@@ -45,7 +45,7 @@ public class TestOux{
 		System.out.println(cir.toString());
 	}
     
-	public void main(String[] args) throws Exception{
+	public static void main(String[] args) throws Exception{
 		TestOux t = new TestOux();
 		t.tester();
 	}
