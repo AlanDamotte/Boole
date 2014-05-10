@@ -13,7 +13,7 @@ public class Itr extends $Generateur{
 	
 	@Override
 	public String toString(){
-		return super.toString()+"{"+this.sor_tab()[0].get_etat().toString()+"}";
+		return super.toString()+"{"+this.etat.toString()+"}";
 	}
 	
 	public void modifier_etat(Niveau n){
