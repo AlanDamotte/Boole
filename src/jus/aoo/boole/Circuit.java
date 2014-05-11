@@ -70,7 +70,6 @@ public class Circuit extends Connexion implements _Operer{
 	
 	//Tableau de composants et connexions
 	private comp_circuit tab_composants[];
-	private boolean mis_en_marche=false;
 	private String nom;
 	
 	//Circuit doit definir les différents niveaux et les connexions entre les composants. C'est lui qui utilise les cases
@@ -157,24 +156,14 @@ public class Circuit extends Connexion implements _Operer{
 		}
 	}
 	
-	private void mise_en_marche(){
-		int i=trouve_comp();
-		int cpt=0;
-		//Lorsque i est égal à tab_composants.length, on ne peut plus effectuer l'opération operer
-		while(i!=this.tab_composants.length){
-			this.tab_composants[i].set_op(false);
-			this.tab_composants[i].set_num_comp(cpt);
-			this.operer_comp(i);
-			i=trouve_comp();
-			cpt++;
-		}
-	}
-	
 	public void operer(){
-		if (this.mis_en_marche){
-			int i=0;
-			int j;
-			while(i<this.tab_composants.length){
+			int i,l,j;
+			l=-1;
+			for(i=0;i<this.tab_composants.length;i++){
+				if(this.tab_composants[i].get_num_comp()>l){l=this.tab_composants[i].get_num_comp();}
+			}
+			i=0;
+			while(i<=l){
 				j=0;
 				while(j<this.tab_composants.length && this.tab_composants[j].get_num_comp()!=i){
 					j++;
@@ -182,11 +171,16 @@ public class Circuit extends Connexion implements _Operer{
 				if (j<this.tab_composants.length){operer_comp(j);}
 				i++;
 			}
-		}
-		else{
-			mise_en_marche();
-			this.mis_en_marche=true;
-		}
+			i=trouve_comp();
+			int cpt=l+1;
+			//Lorsque i est égal à tab_composants.length, on ne peut plus effectuer l'opération operer
+			while(i!=this.tab_composants.length){
+				this.tab_composants[i].set_op(false);
+				this.tab_composants[i].set_num_comp(cpt);
+				this.operer_comp(i);
+				i=trouve_comp();
+				cpt++;
+			}
 	}
 	
 	@Override
