@@ -39,8 +39,8 @@ public class TestOux{
 		cir.operer();
 		System.out.println(cir.toString()+"\n");
 		
-        cir.modif_itr(0, Niveau.Haut);
-		cir.modif_itr(1, Niveau.Haut);
+        cir.modif_itr(0, Niveau.Bas);
+		cir.modif_itr(1, Niveau.Bas);
 		cir.operer();
 		System.out.println(cir.toString());
 		
