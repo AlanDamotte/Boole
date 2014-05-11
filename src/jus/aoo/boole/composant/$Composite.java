@@ -3,22 +3,18 @@ package jus.aoo.boole.composant;
 import jus.aoo.boole.port.*;
 import jus.aoo.boole.*;
 
-import java.util.*;
 
 //Num composant n'a pas sa place dans $Composant, dans $Composite non plus
 
 //Classe inutilisable: besoin de comprendre le principe des "connexions d'interface en entrée", etc.. de la figure 5 avant d'entamer cette classe
-public abstract class $Composite extends Circuit implements _Composant {
+public abstract class $Composite extends Circuit implements _Operer {
 	
 	/**Operer sera décidé lors de circuit, et il sera appelé lors de composite
 	*/
 	
 	//La liste des composants est apportée par circuit
-	protected List<$Composant> comp_liste = new LinkedList<$Composant>();
-	private Comp comp;
-	//Les listes d'entrées/sorties sont à définir dans les classes en dessous, générateurs & co
-	//protected List<Entree> ent_list = new LinkedList<Entree>();
-	//protected List<Sortie> sor_list = new LinkedList<Sortie>();	
+	protected Circuit cir;
+	protected Comp comp;
 	
 	//Ci dessous: voir si Comp doit etre une abstract class ou si operer est defini a l'interieur
 	private class Comp extends $Composant{
@@ -26,17 +22,11 @@ public abstract class $Composite extends Circuit implements _Composant {
 		public Comp (String nom){
 			super.nom=nom;
 		}
-		public Comp (String nom,Port sor_tab[], Port ent_tab[]){
-			super.nom=nom;
-			super.ent_tab=ent_tab;
-			super.sor_tab=sor_tab;
+		public Comp (String nom,int s, int e){
+			super(nom,new Port[s],new Port[e]);
 		}
 		
-		// A MODIFIER
-		public void operer() {
-			
-		}
-		
+		public void operer(){}
 		
 	}
 	
@@ -48,8 +38,9 @@ public abstract class $Composite extends Circuit implements _Composant {
 	public $Composite(String nom){
 		this.comp=new Comp(nom);
 	}
-	public $Composite(String nom, Port sor_tab[], Port ent_tab[]){
-		this.comp=new Comp(nom,sor_tab,ent_tab);
+	public $Composite(String nom, int s, int e,Circuit cir){
+		this.comp=new Comp(nom,s,e);
+		this.cir=cir;
 	}
 	//Infos complémentaires: quel attribut mettre ?
 	

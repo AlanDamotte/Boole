@@ -1,6 +1,7 @@
 package jus.aoo.boole.composant;
 
 import jus.aoo.boole.port.*;
+import jus.aoo.boole.*;
 
 public class Generateur_Composite extends $Composite {
 
@@ -16,9 +17,8 @@ public class Generateur_Composite extends $Composite {
 		super(nom);
 	}
 	
-	public Generateur_Composite (String nom, Port sor_tab[]){
-		super(nom,sor_tab,new Port[0]);
-		this.sor_tab=sor_tab;
+	public Generateur_Composite (String nom, int s, Circuit cir){
+		super(nom,s,0, cir);
 	}
 
 	

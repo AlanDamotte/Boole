@@ -208,7 +208,7 @@ public class Circuit extends Connexion implements _Operer{
 		int i,j,comp,ent;
 		for(i=0;i<this.tab_composants.length;i++){
 			//Ajout du nom du composant et son nombre d'entrées et  de sorties
-			s=s+"<"+tab_composants[i].get_num_comp()+"|"+this.tab_composants[i].getcomp().toString();
+			s=s+"	<"+tab_composants[i].get_num_comp()+"|"+this.tab_composants[i].getcomp().toString();
 			//Si il y a des sorties, ajouter une flèche
 			if(this.tab_composants[i].getcomp().nb_sorties()!=0){
 				s=s+"->";

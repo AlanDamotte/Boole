@@ -1,7 +1,7 @@
 package jus.aoo.boole.composant;
 
 
-
+import jus.aoo.boole.*;
 import jus.aoo.boole.port.Port;
 
 public class Recepteur_Composite extends $Composite{
@@ -19,9 +19,8 @@ public class Recepteur_Composite extends $Composite{
 	}
 	
 
-	public Recepteur_Composite(String nom, Port ent_tab[]){
-		super(nom,new Port[0],ent_tab);
-		this.ent_tab=ent_tab;
+	public Recepteur_Composite(String nom, int e, Circuit cir){
+		super(nom,0,e,cir);
 	}
 	
 	

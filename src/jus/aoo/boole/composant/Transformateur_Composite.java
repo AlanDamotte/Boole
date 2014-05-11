@@ -1,6 +1,7 @@
 package jus.aoo.boole.composant;
 
 import jus.aoo.boole.port.Port;
+import jus.aoo.boole.*;
 
 public class Transformateur_Composite extends $Composite {
 
@@ -17,10 +18,8 @@ public class Transformateur_Composite extends $Composite {
 	}
 	
 
-	public Transformateur_Composite (String nom, Port sor_tab[], Port ent_tab[]){
-		super(nom,sor_tab,ent_tab);
-		this.sor_tab=sor_tab;
-		this.ent_tab=ent_tab;
+	public Transformateur_Composite (String nom, int s, int e, Circuit cir){
+		super(nom,s,e, cir);
 	}
 
 
