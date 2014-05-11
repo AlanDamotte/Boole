@@ -94,6 +94,14 @@ public class Circuit extends Connexion implements _Operer{
 		}
 	}
 	
+	public $Composant getcomp(int i){
+		return this.tab_composants[i].getcomp();
+	}
+	
+	public int length(){
+		return this.tab_composants.length;
+	}
+	
 	public Circuit(){
 		this.nom="";
 	}

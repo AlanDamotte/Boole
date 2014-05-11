@@ -12,7 +12,8 @@ import java.util.List;
 public abstract class $Generateur extends $Composant implements Iterable<Void>{
 	
 	public Iterator<Void> iterator(){
-	    List<Void> l = new LinkedList<Void>(null);
+	    List<Void> l = new LinkedList<Void>();
+	    l.add(null);
 		return l.iterator();
 	}
 	

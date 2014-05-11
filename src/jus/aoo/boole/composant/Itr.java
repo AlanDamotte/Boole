@@ -19,7 +19,8 @@ public class Itr extends $Generateur{
 	//Dans le cas des interrupteurs, on a 2 éléments dans l'Itereable
 	@Override
 	public Iterator<Void> iterator(){
-	    List<Void> l = new LinkedList<Void>(null);
+	    List<Void> l = new LinkedList<Void>();
+	    l.add(null);
 	    l.add(null);
 		return l.iterator();
 	}
