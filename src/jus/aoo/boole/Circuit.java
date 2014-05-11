@@ -201,10 +201,10 @@ public class Circuit extends Connexion implements _Operer{
 							ent=c.getEntree();
 							s=s+comp+"#"+ent+",";
 						}
-						s=/*s.substring(1)+*/s+")"+",";
+						s=s.substring(0, s.length()-1)+")"+",";
 					}
 				}
-				//s=s.substring(1);
+				s=s.substring(0, s.length()-1);
 			}
 			s=s+">\n";
 		}
