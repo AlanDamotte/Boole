@@ -85,6 +85,15 @@ public class Circuit extends Connexion implements _Operer{
 		}
 	}
 	
+	public void modif_itr(int num_composant) throws Exception{
+		if(this.tab_composants[num_composant].getcomp() instanceof Itr){
+			((Itr)this.tab_composants[num_composant].comp).modifier_etat();
+		}
+		else{
+			throw new Exception("Le composant spécifié n'est pas un interrupteur");
+		}
+	}
+	
 	public Circuit(){
 		this.nom="";
 	}
