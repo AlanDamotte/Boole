@@ -195,21 +195,27 @@ public class Circuit extends Connexion implements _Operer{
 	@Override
 	public String toString(){
 		Connexion[] co;
+		//On place le nom du circuit
 		String s=new String(this.nom+"[\n");
 		int i,j,comp,ent;
 		for(i=0;i<this.tab_composants.length;i++){
+			//Ajout du nom du composant et son nombre d'entrées et  de sorties
 			s=s+"<"+tab_composants[i].get_num_comp()+"|"+this.tab_composants[i].getcomp().toString();
+			//Si il y a des sorties, ajouter une flèche
 			if(this.tab_composants[i].getcomp().nb_sorties()!=0){
 				s=s+"->";
 				co=this.tab_composants[i].getconnexions();
+				//Pour chaque sortie, on affiche la liste des connnexions associées
 				for(j=0;j<this.tab_composants[i].getcomp().sor_tab().length;j++){
 					if(!co[j].connexions.isEmpty()){
 						s=s+"#"+j+"(";
+						//On récupère pour chacune des connexions le numéro de composant et d'entrée à laquelle la sortie est connectée
 						for (Connexion_simple c : co[j].connexions){
 							comp=c.getComp();
 							ent=c.getEntree();
 							s=s+comp+"#"+ent+",";
 						}
+						//Substring enlève les virgules en trop
 						s=s.substring(0, s.length()-1)+")"+",";
 					}
 				}

@@ -22,4 +22,12 @@ public class CircuitTestUnitaire {
 		}
 	}
 	
+	private void recursion(?){
+		
+	}
+	
+	public void tester(){
+		
+	}
+	
 }
