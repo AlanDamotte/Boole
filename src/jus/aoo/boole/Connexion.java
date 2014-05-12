@@ -6,9 +6,9 @@ import java.util.LinkedList;
 public class Connexion {
 	
 	//Connexion simple representant la connexion entre la sortie et une
-	//entree definie parson numero de composant et son numero d'entree
+	//entree definie par son numero de composant et son numero d'entree
 	protected class Connexion_simple{
-		private int composant; // composant lié à l'entrée
+		private int composant;
 		private int entree; 
 		
 		public int getEntree(){
@@ -44,6 +44,7 @@ public class Connexion {
 	//Attribut definissant la liste des connexions associees a une sortie
 	protected List<Connexion_simple> connexions;
 	
+	//Constructeur de base
 	public Connexion(){
 		connexions= new LinkedList<Connexion_simple>();
 	}

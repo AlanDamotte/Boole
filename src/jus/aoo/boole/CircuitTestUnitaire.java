@@ -73,6 +73,7 @@ public class CircuitTestUnitaire {
 	
 	public void tester() throws Exception{
 		int i;
+		System.out.println(this.c.nom());
 		for(i=0;i<nb_entrees;i++){
 			System.out.print("E"+(i+1)+" ");
 		}

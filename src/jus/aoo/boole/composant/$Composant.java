@@ -48,54 +48,38 @@ public abstract class $Composant implements _Composant{
 		return num_composant;
 	}*/
 	
+	//Renvoie le nombre d'entrées du composant
 	public int nb_entrees(){
 		return ent_tab.length;
 	}
 	
+	//Renvoie le nombre de sorties du composant
 	public int nb_sorties(){
 		return sor_tab.length;
 	}
 	
+	//Renvoie le nom du composant
 	public String nom(){
 		return new String(nom);
 	}
 	
 	//La méthode operer ne sera implémentée réellement que dans les niveaux plus bas
 	
+	//Accesseur à une copie du tableau des ports de sortie
 	public Port[] sor_tab(){
 		Port[] res; 
 		res=sor_tab.clone(); 
 		return res;
 	}
 
+	//Accesseur à une copie du tableau des ports d'entrée
 	public Port[] ent_tab(){
 		Port[] res; 
 		res=ent_tab.clone(); 
 		return res;
 	}
 	
-	public boolean ports_entree_actifs(){
-		int i=0;
-		boolean b =true;
-		while((i<this.ent_tab.length) && b){
-			if(this.ent_tab[i].get_etat() == Niveau.Aucun){
-				b =false;
-			}
-			i++;
-		}
-		/*
-		 //Pourquoi vérifier les sorties?
-		i=0;
-		while((i<this.sor_tab.length) && b){
-			if(this.sor_tab[i].get_etat() == Niveau.Aucun){
-				b =false;
-			}
-			i++;
-		}
-		*/
-		return b;
-	}
-	
+	//Place le niveau du port d'entrée spécifié à n
 	public void set_port(boolean entsor, int num_port, Niveau n){
 		if(entsor){
 			this.ent_tab[num_port].set_etat(n);
@@ -105,6 +89,15 @@ public abstract class $Composant implements _Composant{
 		}
 	}
 	
+	//Place tous les ports d'entrée au niveau Aucun
+	public void raz(){
+		int i;
+		for(i=0;i<this.nb_entrees();i++){
+			set_port(true,i,Niveau.Aucun);
+		}
+	}
+	
+	//Renvoie le nom du composant et son nombre d'entrées et de sorties
 	@Override
 	public String toString(){
 		return this.nom+"("+this.ent_tab().length+","+this.sor_tab().length+")";

@@ -4,6 +4,8 @@ import jus.aoo.boole.port.*;
 import jus.aoo.boole.*;
 
 
+//PAS ENCORE FONCTIONNEL
+
 //Num composant n'a pas sa place dans $Composant, dans $Composite non plus
 
 //Classe inutilisable: besoin de comprendre le principe des "connexions d'interface en entrée", etc.. de la figure 5 avant d'entamer cette classe
