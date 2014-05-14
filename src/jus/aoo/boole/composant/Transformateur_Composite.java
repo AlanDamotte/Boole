@@ -1,7 +1,6 @@
 package jus.aoo.boole.composant;
 
 import jus.aoo.boole.port.Port;
-import jus.aoo.boole.*;
 
 //Code non fonctionnel
 
@@ -20,8 +19,8 @@ public class Transformateur_Composite extends $Composite {
 	}
 	
 
-	public Transformateur_Composite (String nom, int s, int e, Circuit cir){
-		super(nom,s,e, cir);
+	public Transformateur_Composite (String nom, int sortie, int entree){
+		super(nom,sortie,entree);
 	}
 
 

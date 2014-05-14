@@ -20,8 +20,8 @@ public abstract class $Composant implements _Composant{
 	protected Port ent_tab[];	
 	//Infos complémentaires: quel attribut mettre ?
 	
-	protected $Composant (){
-		
+	protected $Composant(){
+		this("",new Port[0],new Port[0]);
 	}
 
 	public $Composant (String nom, Port sor_tab[], Port ent_tab[]){

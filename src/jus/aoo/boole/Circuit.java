@@ -10,10 +10,14 @@ public class Circuit extends Connexion implements _Operer{
 	protected class comp_circuit{
 		
 		//Définit l'ordre de passage des composants
-		private int ordre;
-		private $Composant comp;
+		protected int ordre;
+		protected $Composant comp;
 		//Tableau des entrées reliées aux sorties du composant traité
-		private Connexion connexions[];// tableau de connexions sortantes
+		protected Connexion connexions[];// tableau de connexions sortantes
+		
+		private comp_circuit(){
+			this.ordre=-1;
+		}
 		
 		private comp_circuit($Composant comp){
 			this.comp=comp;
@@ -75,13 +79,24 @@ public class Circuit extends Connexion implements _Operer{
 		}
 	}
 	
-	private class composite_circuit extends comp_circuit{
+	protected class composite_circuit extends comp_circuit{
 		
+		//Il faut gérer par la suite le cas où on est dans composite_circuit pour gérer les opérations selon le prochain attribut
 		private $Composite c;
 		
 		public composite_circuit($Composite c){
-			super(null);
+			super();
 			this.c=c;
+			super.connexions=new Connexion[c.nb_sorties()];
+			int i;
+			//Initialisation des listes de connexions simple dans les tables du tableau
+			for(i=0;i<connexions.length;i++){
+				connexions[i]=new Connexion();
+			}
+		}
+		
+		public void add_interface(int sortie,int num_interface){
+			super.connexions[sortie].add_interface(num_interface);
 		}
 	}
 	

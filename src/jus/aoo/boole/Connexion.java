@@ -49,9 +49,9 @@ public class Connexion {
 		
 		//Redefinition de equals afin de simplifier les operations sur les listes par la suite
 		@Override
-		public boolean equals(Object co){
-			if (co instanceof Connexion_simple){
-				return ( ((Connexion_simple)co).getComp()==this.getComp() && ((Connexion_simple)co).getEntree()==this.getEntree() );
+		public boolean equals(Object in){
+			if (in instanceof Interface){
+				return ((Interface)in).getEntree()==this.getEntree();
 			}
 			else{
 				return false;
@@ -72,6 +72,13 @@ public class Connexion {
 		Connexion_simple co=new Connexion_simple(composant,entree);
 		if(!this.connexions.contains(co)){
 			this.connexions.add(co);
+		}
+	}
+	
+	public void add_interface(int num_interface){
+		Interface in=new Interface(num_interface);
+		if(!this.connexions.contains(in)){
+			this.connexions.add(in);
 		}
 	}
 	
