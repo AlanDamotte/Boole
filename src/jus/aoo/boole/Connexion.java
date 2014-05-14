@@ -41,6 +41,24 @@ public class Connexion {
 		}
 	}
 	
+	protected class Interface extends Connexion_simple{
+		
+		public Interface(int num_interface){
+			super(-1,num_interface);
+		}
+		
+		//Redefinition de equals afin de simplifier les operations sur les listes par la suite
+		@Override
+		public boolean equals(Object co){
+			if (co instanceof Connexion_simple){
+				return ( ((Connexion_simple)co).getComp()==this.getComp() && ((Connexion_simple)co).getEntree()==this.getEntree() );
+			}
+			else{
+				return false;
+			}
+		}
+	}
+	
 	//Attribut definissant la liste des connexions associees a une sortie
 	protected List<Connexion_simple> connexions;
 	

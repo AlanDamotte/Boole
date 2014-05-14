@@ -4,7 +4,7 @@ import jus.aoo.boole.port.*;
 import jus.aoo.boole.*;
 
 
-//PAS ENCORE 
+//PAS ENCORE FONCTIONNEL
 
 public abstract class $Composite extends Circuit implements _Operer {
 	
@@ -24,7 +24,7 @@ public abstract class $Composite extends Circuit implements _Operer {
 			super(nom,new Port[s],new Port[e]);
 		}
 		
-		//Cette méthode 
+		//Cette méthode ne contient rien puisqu'operer n'est pas à utiliser ici. Operer sera réalisé tout de même, mais pas dans cette classe.
 		public void operer(){}
 	}
 	

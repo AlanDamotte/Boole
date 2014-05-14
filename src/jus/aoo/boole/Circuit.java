@@ -3,7 +3,7 @@ package jus.aoo.boole;
 import jus.aoo.boole.composant.*;
 import jus.aoo.boole.port.*;
 
-//extends connexion?
+
 public class Circuit extends Connexion implements _Operer{
 	
 	// Classe implémentant les composants du circuit
@@ -72,6 +72,16 @@ public class Circuit extends Connexion implements _Operer{
 		public void raz(){
 			this.ordre=-1;
 			this.comp.raz();
+		}
+	}
+	
+	private class composite_circuit extends comp_circuit{
+		
+		private $Composite c;
+		
+		public composite_circuit($Composite c){
+			super(null);
+			this.c=c;
 		}
 	}
 	
