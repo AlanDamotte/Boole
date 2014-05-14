@@ -4,7 +4,7 @@ import jus.aoo.boole.port.*;
 import jus.aoo.boole.*;
 
 
-//PAS ENCORE FONCTIONNEL
+//PAS ENCORE FONCTIONNE
 
 public abstract class $Composite extends Circuit implements _Operer {
 	
