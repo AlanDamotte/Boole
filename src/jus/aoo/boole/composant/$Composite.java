@@ -6,16 +6,12 @@ import jus.aoo.boole.*;
 
 //PAS ENCORE FONCTIONNEL
 
-//Num composant n'a pas sa place dans $Composant, dans $Composite non plus
-
-//Classe inutilisable: besoin de comprendre le principe des "connexions d'interface en entrée", etc.. de la figure 5 avant d'entamer cette classe
 public abstract class $Composite extends Circuit implements _Operer {
 	
 	/**Operer sera décidé lors de circuit, et il sera appelé lors de composite
 	*/
 	
 	//La liste des composants est apportée par circuit
-	protected Circuit cir;
 	protected Comp comp;
 	
 	//Ci dessous: voir si Comp doit etre une abstract class ou si operer est defini a l'interieur
@@ -28,10 +24,11 @@ public abstract class $Composite extends Circuit implements _Operer {
 			super(nom,new Port[s],new Port[e]);
 		}
 		
+		//Cette méthode 
 		public void operer(){}
-		
 	}
 	
+	//HERITAGE CONNEXION
 
 	public $Composite(){
 		
@@ -42,7 +39,8 @@ public abstract class $Composite extends Circuit implements _Operer {
 	}
 	public $Composite(String nom, int s, int e,Circuit cir){
 		this.comp=new Comp(nom,s,e);
-		this.cir=cir;
+		super.nom=cir.nom();
+		super.tab_composants=cir.get_tab_comp();
 	}
 	//Infos complémentaires: quel attribut mettre ?
 	

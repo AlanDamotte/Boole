@@ -7,7 +7,7 @@ import jus.aoo.boole.port.*;
 public class Circuit extends Connexion implements _Operer{
 	
 	// Classe implémentant les composants du circuit
-	private class comp_circuit{
+	protected class comp_circuit{
 		
 		//Définit l'ordre de passage des composants
 		private int ordre;
@@ -76,8 +76,8 @@ public class Circuit extends Connexion implements _Operer{
 	}
 	
 	//Tableau de composants et connexions
-	private comp_circuit tab_composants[];
-	private String nom;
+	protected comp_circuit tab_composants[];
+	protected String nom;
 	
 	//Circuit doit definir les différents niveaux et les connexions entre les composants. C'est lui qui utilise les cases
 	//allouées dans le tableau créé par le constructeur dans les composants.
@@ -132,6 +132,10 @@ public class Circuit extends Connexion implements _Operer{
 		}
 	}
 	
+	public comp_circuit[] get_tab_comp(){
+		return this.tab_composants.clone();
+	}
+	
 	//Ajoute une connexion entre la sortie num_sortie du composant comp_sortie et l'entrée num_entree du composant comp_entree
 	public void connexion(int comp_sortie, int num_sortie, int comp_entree, int num_entree){
 		this.tab_composants[comp_sortie].add(num_sortie, comp_entree, num_entree);
@@ -140,7 +144,15 @@ public class Circuit extends Connexion implements _Operer{
 	//Pareil que ci-dessus, à l'exception près que l'ordre de passage du composant dont l'entrée est remis à -1 et ses ports au niveau Aucun
 	public void enleve_connexion(int comp_sortie, int num_sortie, int comp_entree, int num_entree){
 		this.tab_composants[comp_sortie].remove(num_sortie, comp_entree, num_entree);
-		this.tab_composants[comp_entree].raz();
+		int k=this.tab_composants[comp_entree].get_ordre();
+		int i;
+		if(k!=-1){
+			for(i=0;i<this.tab_composants.length;i++){
+				if(this.tab_composants[i].get_ordre()>=k){
+					this.tab_composants[i].raz();
+				}
+			}
+		}
 	}
 	
 	//Indique si il y a un port en entrée ouvert après Operer.
@@ -206,10 +218,12 @@ public class Circuit extends Connexion implements _Operer{
 			int i,l,j;
 			l=-1;
 			//On commence par réaliser les opérations sur les composants dont l'ordre de passage est déjà spécifié
+			//Récupère l'ordre maximal parmi les composants
 			for(i=0;i<this.tab_composants.length;i++){
 				if(this.tab_composants[i].get_ordre()>l){l=this.tab_composants[i].get_ordre();}
 			}
 			i=0;
+			//Applique operer_comp sur tous les composants dont l'ordre est entre 0 et l
 			while(i<=l){
 				j=0;
 				while(j<this.tab_composants.length && this.tab_composants[j].get_ordre()!=i){
