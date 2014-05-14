@@ -4,6 +4,8 @@ package jus.aoo.boole.composant;
 import jus.aoo.boole.*;
 import jus.aoo.boole.port.Port;
 
+//Code non fonctionnel
+
 public class Recepteur_Composite extends $Composite{
 	
 	protected Port sor_tab[];

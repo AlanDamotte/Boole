@@ -10,9 +10,7 @@ public class Vcc extends $Generateur{
 		super("Vcc",new Port[1]);
 	}
 
-	//Operer
-	//sortie.set_etat(true);
-	
+	//Place le niveau de sortie à haut
 	public void operer(){
 			sor_tab[0].set_etat(Niveau.Haut);
 	}

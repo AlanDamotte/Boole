@@ -7,15 +7,15 @@ public class Non extends $Transformateur{
 		super("Ou",new Port[1],new Port[1]);
 	}
 	
-	//Operer
-	//sortie.set_etat(!entree.get_etat());
-	
+	//Place l'opposé de l'entrée en sortie
 	public void operer(){
-		if(ent_tab[0].get_etat()==Niveau.Haut){
-			sor_tab[0].set_etat(Niveau.Bas);
-		}
-		else{
-			sor_tab[0].set_etat(Niveau.Haut);
+		if(this.ent_valide()){
+			if(ent_tab[0].get_etat()==Niveau.Haut){
+				sor_tab[0].set_etat(Niveau.Bas);
+			}
+			else{
+				sor_tab[0].set_etat(Niveau.Haut);
+			}
 		}
 	}
 }

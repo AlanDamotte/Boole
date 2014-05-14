@@ -9,7 +9,7 @@ public class Gnd extends $Generateur{
 		super("Gnd",new Port[1]);
 	}
 	
-	//sortie.set_etat(false);
+	////Place le niveau de sortie à haut
 	public void operer(){
 		sor_tab[0].set_etat(Niveau.Bas);
 	}

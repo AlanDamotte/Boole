@@ -2,11 +2,7 @@ package jus.aoo.boole.composant;
 
 import jus.aoo.boole.port.*;
 
-
-
-//Penser à faire binaire et unaire, ensuite operer sera la seule méthode dans et, ou,..
-
-
+//Cette classe représente les composants possédant des entrées et des sorties
 public abstract class $Transformateur extends $Composant {
 	
 	public $Transformateur(){

@@ -22,6 +22,7 @@ public class Led extends $Recepteur{
 		return super.toString()+"{"+ampoule.toString()+"}";
 	}
 	
+	//Modifie le NiveauVisuel en fonction de l'entrée
 	public void operer(){
 		if(ent_tab[0].get_etat()==Niveau.Haut){
 			this.ampoule=NiveauVisuel.Allume;

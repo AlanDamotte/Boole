@@ -43,10 +43,6 @@ public abstract class $Composant implements _Composant{
 	public $Composant clone() {
 		return this;
 	}
-	/*public int num_composant(){
-		//num_composant est un integer, ainsi num_composant ne sera pas modifiable en donnant sa valeur telle quelle
-		return num_composant;
-	}*/
 	
 	//Renvoie le nombre d'entrées du composant
 	public int nb_entrees(){
@@ -56,6 +52,17 @@ public abstract class $Composant implements _Composant{
 	//Renvoie le nombre de sorties du composant
 	public int nb_sorties(){
 		return sor_tab.length;
+	}
+	
+	//Indique si aucune des entrées n'est à aucun
+	public boolean ent_valide(){
+		int i=0;
+		boolean b=true;
+		while(b && i<this.nb_entrees()){
+			b=this.ent_tab[i].get_etat()!=Niveau.Aucun;
+			i++;
+		}
+		return b;
 	}
 	
 	//Renvoie le nom du composant

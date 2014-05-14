@@ -40,13 +40,7 @@ public class Itr extends $Generateur{
 		}
 		else{this.etat=Niveau.Haut;}
 	}
-	
-	//Operer (niveau ne doit etre utilisé que dans circuit, mais le principe est en dessous)
-	//if(niveau==Niveau.Haut){sortie.set_etat(true);}
-	//else if(niveau==Niveau.Bas){sortie.set_etat(false);}
-	//else {throw new Exception("Niveau incorrect");}
-	
-	// A COMPLETER
+	// On place dans la sortie l'état de l'interrupteur
 	public void operer(){
 		this.sor_tab[0].set_etat(etat);
 	}

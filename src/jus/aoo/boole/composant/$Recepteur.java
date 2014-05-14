@@ -3,6 +3,7 @@ package jus.aoo.boole.composant;
 import jus.aoo.boole.port.*;
 
 
+//Cette classe représente les composants sans sortie
 public abstract class $Recepteur extends $Composant {
 	
 	public $Recepteur(){

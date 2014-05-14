@@ -3,6 +3,8 @@ package jus.aoo.boole.composant;
 import jus.aoo.boole.port.Port;
 import jus.aoo.boole.*;
 
+//Code non fonctionnel
+
 public class Transformateur_Composite extends $Composite {
 
 	protected Port sor_tab[];
