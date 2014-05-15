@@ -4,9 +4,7 @@ import jus.aoo.boole.port.*;
 import jus.aoo.boole.*;
 import jus.aoo.boole.Connexion.*;
 
-
-//PAS ENCORE FONCTIONNEL
-
+//Classe définissant les composites en général
 public abstract class $Composite extends $Composant implements _Operer {
 	
 	/**Operer sera décidé lors de circuit, et il sera appelé lors de composite
