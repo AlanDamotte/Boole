@@ -58,6 +58,7 @@ public abstract class $Composite extends $Composant implements _Operer {
 			return super.tab_composants[num_comp].getcomp().sor_tab[num_sortie].get_etat();
 		}
 		
+		//Permet de trouver quelle sortie (numéro de composant et de sortie) possédant l'interface #in
 		public Comp_sortie trouve_interface(int in){
 			int i,j;
 			j=0;
@@ -119,6 +120,9 @@ public abstract class $Composite extends $Composant implements _Operer {
 		return s.substring(0, s.length());
 	}
 	
+	//Operer applique ses entrées sur celles des composants du circuit interne nécessaires
+	//Il exécute operer du circuit interne
+	//Les sorties internes avec une interface en sortie transmettent leur niveau aux sorties du composite
 	public void operer(){
 		Niveau n;
 		Comp_sortie c;
