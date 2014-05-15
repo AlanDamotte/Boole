@@ -11,7 +11,7 @@ public class CircuitTestUnitaire {
 	private int nb_entrees;
 	private int nb_sorties;
 	
-	
+	//Le circuit est composé d'interrupteurs et de led en fonction du nombre d'entrées et de sorties
 	public CircuitTestUnitaire($Composant comp){
 		$Composant[] tab=new $Composant[comp.nb_entrees()+comp.nb_sorties()+1];
 		int i;
@@ -67,6 +67,9 @@ public class CircuitTestUnitaire {
 				
 				c.modif_itr(prof);
 				i.next();
+				
+				//Permet d'afficher si on le souhaite le circuit à chaque pas
+				//System.out.println(this.c.toString());
 			}
 		}
 	}
@@ -87,7 +90,7 @@ public class CircuitTestUnitaire {
 	}
 	
 	public static void main(String[] args) throws Exception{
-		CircuitTestUnitaire cir = new CircuitTestUnitaire(new Ou());
+		CircuitTestUnitaire cir = new CircuitTestUnitaire(new Add3b());
 		cir.tester();
 	}
 	

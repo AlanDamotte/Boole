@@ -2,9 +2,10 @@ package jus.aoo.boole;
 
 import jus.aoo.boole.composant.*;
 import jus.aoo.boole.port.*;
+import jus.aoo.boole.Connexion.*;
 
 
-public class Circuit extends Connexion implements _Operer{
+public class Circuit implements _Operer{
 	
 	// Classe implémentant les composants du circuit
 	protected class comp_circuit{
@@ -77,28 +78,13 @@ public class Circuit extends Connexion implements _Operer{
 			this.ordre=-1;
 			this.comp.raz();
 		}
-	}
-	
-	protected class composite_circuit extends comp_circuit{
-		
-		//Il faut gérer par la suite le cas où on est dans composite_circuit pour gérer les opérations selon le prochain attribut
-		private $Composite c;
-		
-		public composite_circuit($Composite c){
-			super();
-			this.c=c;
-			super.connexions=new Connexion[c.nb_sorties()];
-			int i;
-			//Initialisation des listes de connexions simple dans les tables du tableau
-			for(i=0;i<connexions.length;i++){
-				connexions[i]=new Connexion();
-			}
-		}
 		
 		public void add_interface(int sortie,int num_interface){
-			super.connexions[sortie].add_interface(num_interface);
+			this.connexions[sortie].add_interface(num_interface);
 		}
 	}
+		
+	
 	
 	//Tableau de composants et connexions
 	protected comp_circuit tab_composants[];
@@ -231,10 +217,12 @@ public class Circuit extends Connexion implements _Operer{
 		//Pour chaque sortie du composant, on place son niveau aux entrées auxquelles in est connecté
 		for(i=0;i<co.length;i++){
 			n=tab_composants[x].getcomp().sor_tab()[i].get_etat();
-			for (Connexion_simple c : co[i].connexions){
-				comp=c.getComp();
-				ent=c.getEntree();
-				this.tab_composants[comp].set_niveau(ent, n);
+			for (Connexion_simple c : co[i].connexions()){
+				if(!(c instanceof Interface)){
+					comp=c.getComp();
+					ent=c.getEntree();
+					this.tab_composants[comp].set_niveau(ent, n);
+				}
 			}
 		}
 	}
@@ -275,7 +263,7 @@ public class Circuit extends Connexion implements _Operer{
 		Connexion[] co;
 		//On place le nom du circuit
 		String s=new String(this.nom+"[\n");
-		int i,j,comp,ent;
+		int i,j;
 		for(i=0;i<this.tab_composants.length;i++){
 			//Ajout du nom du composant et son nombre d'entrées et  de sorties
 			s=s+"	<"+tab_composants[i].get_ordre()+"|"+this.tab_composants[i].getcomp().toString();
@@ -285,16 +273,8 @@ public class Circuit extends Connexion implements _Operer{
 				co=this.tab_composants[i].getconnexions();
 				//Pour chaque sortie, on affiche la liste des connnexions associées
 				for(j=0;j<this.tab_composants[i].getcomp().sor_tab().length;j++){
-					if(!co[j].connexions.isEmpty()){
-						s=s+"#"+j+"(";
-						//On récupère pour chacune des connexions le numéro de composant et d'entrée à laquelle la sortie est connectée
-						for (Connexion_simple c : co[j].connexions){
-							comp=c.getComp();
-							ent=c.getEntree();
-							s=s+comp+"#"+ent+",";
-						}
-						//Substring enlève les virgules en trop
-						s=s.substring(0, s.length()-1)+")"+",";
+					if(!co[j].connexions().isEmpty()){
+						s=s+"#"+j+co[j].toString()+",";
 					}
 				}
 				s=s.substring(0, s.length()-1);

@@ -4,7 +4,7 @@ import jus.aoo.boole.port.*;
 
 public class Non extends $Transformateur{
 	public Non(){
-		super("Ou",new Port[1],new Port[1]);
+		super("Non",new Port[1],new Port[1]);
 	}
 	
 	//Place l'opposé de l'entrée en sortie

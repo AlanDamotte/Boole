@@ -6,26 +6,17 @@ import jus.aoo.boole.Niveau;
 
 public abstract class $Composant implements _Composant{
 	
-	//Num composant est initialisé dans circuit
-	
-	//protected int num_composant;
-	//Les listes d'entrées/sorties sont à définir dans les classes en dessous, générateurs & co
-	//protected List<Entree> ent_list = new LinkedList<Entree>();
-	//protected List<Sortie> sor_list = new LinkedList<Sortie>();	
+	//Composant est fait à partir d'un nom et de tableaux de ports, représentant ses entrées et sorties.
 	protected String nom;
-	//La liste des sorties et des entrées est utile pour accéder aux états de chacun d'entre eux
-	//Faire des tableaux pour les entrées et sorties
-	//Les constructeurs définiront ces tableaux en allouant les tableaux en fonction du nombre de cases
 	protected Port sor_tab[];
-	protected Port ent_tab[];	
-	//Infos complémentaires: quel attribut mettre ?
+	protected Port ent_tab[];
+	
 	
 	protected $Composant(){
 		this("",new Port[0],new Port[0]);
 	}
 
 	public $Composant (String nom, Port sor_tab[], Port ent_tab[]){
-		//this.num_composant=num_composant;
 		this.nom=nom;
 		this.sor_tab=sor_tab;
 		this.ent_tab=ent_tab;
